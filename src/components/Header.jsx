@@ -1,5 +1,9 @@
 function Header() {
-  return <h1>Page title</h1>;
+  return (
+    <header>
+      <h1>Page title</h1>
+    </header>
+  );
 }
 
 export default Header;
