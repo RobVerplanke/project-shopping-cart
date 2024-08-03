@@ -1,0 +1,7 @@
+.card-holder {
+  display: flex;
+}
+
+li {
+  list-style: none;
+}
