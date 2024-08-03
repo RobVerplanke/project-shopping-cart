@@ -14,14 +14,12 @@ function Shop() {
     <>
       <h2>Shop page</h2>
       <div className="card-holder">
-        <ul>
-          {/* Itererate through all available products and render each of them on a productcard */}
-          {items.map((item) => (
-            <li key={item.id}>
-              <Link to={`product/${item.id}`}>{ProductCard(item)}</Link>
-            </li>
-          ))}
-        </ul>
+        {/* Itererate through all available products and render each of them on a productcard */}
+        {items.map((item) => (
+          <Link key={item.id} to={`product/${item.id}`}>
+            {ProductCard(item)}
+          </Link>
+        ))}
       </div>
     </>
   );

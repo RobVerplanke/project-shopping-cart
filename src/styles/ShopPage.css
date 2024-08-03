@@ -1,7 +1,7 @@
 .card-holder {
   display: flex;
-}
-
-li {
-  list-style: none;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  height: 100vh;
+  gap: 20px;
 }
