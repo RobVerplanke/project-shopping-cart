@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar component > renders navigation links correctly 1`] = `
+<DocumentFragment>
+  <nav>
+    <ul>
+      <li>
+        <a
+          href="/home"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shop"
+        >
+          Shop
+        </a>
+      </li>
+      <li>
+        <a
+          href="/cart"
+        >
+          Cart
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;
