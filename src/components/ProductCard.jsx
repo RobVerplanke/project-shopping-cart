@@ -1,6 +1,6 @@
 import '../styles/ProductCard.css';
 
-function ProductCard(item) {
+function createProductCard(item) {
   const { title, price, category, image } = item;
 
   return (
@@ -23,4 +23,4 @@ function ProductCard(item) {
   );
 }
 
-export default ProductCard;
+export default createProductCard;

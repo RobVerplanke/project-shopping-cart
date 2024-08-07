@@ -1,27 +1,27 @@
 import { Link } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import ProductCard from '../ProductCard';
+import createProductCard from '../ProductCard';
 import '../../styles/ShopPage.css';
 
 function Shop() {
   const { items, isLoading, error } = useData();
 
-  // While data is feteched, show loading message or show a error message if fetching failed
+  // While data is fetching, show loading message or show a error message if fetching failed
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
 
   return (
-    <>
+    <main>
       <h2>Shop page</h2>
       <div className="card-holder">
         {/* Itererate through all available products and render each of them on a productcard */}
         {items.map((item) => (
           <Link key={item.id} to={`product/${item.id}`}>
-            {ProductCard(item)}
+            {createProductCard(item)}
           </Link>
         ))}
       </div>
-    </>
+    </main>
   );
 }
 
