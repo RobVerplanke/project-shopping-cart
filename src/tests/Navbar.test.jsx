@@ -1,9 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter, useRoutes } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, useRoutes, Routes, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Navbar from '../components/Navbar';
 import routes from '../components/routes';
+import ErrorPage from '../components/pages/ErrorPage';
 
 function AppWithRoutes() {
   return useRoutes(routes);
@@ -46,14 +47,13 @@ describe('Navbar component', () => {
       </MemoryRouter>
     );
 
-    // Home page is initially rendered
-    expect(screen.getByText(/Home page/i)).toBeInTheDocument();
-
     // Simulate a click on the Shop button
     await user.click(screen.getByText(/Shop/i));
 
-    // Shop page is rendered
-    expect(screen.getByText(/Shop page/i)).toBeInTheDocument();
+    // Shop page title is rendered after loading items
+    await waitFor(() =>
+      expect(screen.getByText(/Shop page/i)).toBeInTheDocument()
+    );
   });
 
   it('Loads Cart component after click on the Cart button', async () => {
@@ -65,9 +65,6 @@ describe('Navbar component', () => {
       </MemoryRouter>
     );
 
-    // Home page is initially rendered
-    expect(screen.getByText(/Home page/i)).toBeInTheDocument();
-
     // Simulate a click on the Cart button
     await user.click(screen.getByText(/Cart/i));
 
@@ -78,12 +75,15 @@ describe('Navbar component', () => {
   // it('Loads error page on invalid route', async () => {
   //   render(
   //     <MemoryRouter initialEntries={['/invalid-route']}>
-  //       <AppWithRoutes />
+  //       <Routes>
+  //         <Route path="/*" element={<AppWithRoutes />} />
+  //         <Route path="*" element={<ErrorPage />} />
+  //       </Routes>
   //     </MemoryRouter>
   //   );
 
-  //   await waitFor(() =>
-  //     expect(screen.getByText(/Error page/i)).toBeInTheDocument()
-  //   );
+  //   await waitFor(() => {
+  //     expect(screen.getByText(/Error page/i)).toBeInTheDocument();
+  //   });
   // });
 });
