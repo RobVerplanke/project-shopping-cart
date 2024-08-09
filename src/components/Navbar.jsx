@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useData } from '../context/DataContext';
 
 function Navbar() {
+  const { cartQuantityCounter } = useData();
   return (
     <nav>
       <ul>
@@ -11,7 +13,7 @@ function Navbar() {
           <Link to="shop">Shop</Link>
         </li>
         <li>
-          <Link to="cart">Cart</Link>
+          <Link to="cart">Cart: {cartQuantityCounter}</Link>
         </li>
       </ul>
     </nav>

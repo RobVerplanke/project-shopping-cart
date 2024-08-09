@@ -4,13 +4,52 @@ import '../../styles/ProductDetailPage.css';
 
 function ProductDetail() {
   const { id } = useParams();
-  const { items, isLoading, error } = useData();
+  const {
+    items,
+    itemQuantityCounter,
+    setItemQuantityCounter,
+    setCartItems,
+    isLoading,
+    error,
+  } = useData();
 
   // Select the corresponding product
   const activeItem = items.find((item) => parseInt(item.id) == id);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
+
+  function handleOnChange(e) {
+    setItemQuantityCounter(parseInt(e.target.value));
+  }
+
+  function handleAddQuantity() {
+    setItemQuantityCounter(itemQuantityCounter + 1);
+  }
+
+  function handleSubstractQuantity() {
+    if (itemQuantityCounter >= 1)
+      setItemQuantityCounter(itemQuantityCounter - 1);
+  }
+
+  function HandleSubmit() {
+    setCartItems((prevCart) => {
+      const foundItem = prevCart.find((item) => item.id === activeItem.id);
+
+      if (foundItem) {
+        return prevCart.map((item) => {
+          return item.id === activeItem.id
+            ? { ...item, quantity: item.quantity + itemQuantityCounter }
+            : item;
+        });
+      } else {
+        return [...prevCart, { ...activeItem, quantity: itemQuantityCounter }];
+      }
+    });
+
+    // Reset amount of items to zero when items are added
+    setItemQuantityCounter(0);
+  }
 
   return (
     <main>
@@ -36,10 +75,20 @@ function ProductDetail() {
             <h4>{activeItem.price}</h4>
           </div>
           <div className="product-add">
-            <button type="button">-</button>
-            <input type="text" />
-            <button type="button">+</button>
-            <button id="add-button">Add</button>
+            <button type="button" onClick={handleSubstractQuantity}>
+              -
+            </button>
+            <input
+              onChange={handleOnChange}
+              type="text"
+              value={itemQuantityCounter}
+            />
+            <button type="button" onClick={handleAddQuantity}>
+              +
+            </button>
+            <button id="add-button" onClick={HandleSubmit}>
+              Add
+            </button>
           </div>
         </div>
       </div>
