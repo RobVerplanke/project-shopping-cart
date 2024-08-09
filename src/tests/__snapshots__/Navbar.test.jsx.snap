@@ -22,7 +22,7 @@ exports[`Navbar component > renders navigation links correctly 1`] = `
         <a
           href="/cart"
         >
-          Cart
+          Cart: 0
         </a>
       </li>
     </ul>

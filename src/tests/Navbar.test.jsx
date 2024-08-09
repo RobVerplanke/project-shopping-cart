@@ -1,16 +1,32 @@
-import { describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, afterEach, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, useRoutes, Routes, Route } from 'react-router-dom';
+import { MemoryRouter, useRoutes } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Navbar from '../components/Navbar';
 import routes from '../components/routes';
-import ErrorPage from '../components/pages/ErrorPage';
+// import ErrorPage from '../components/pages/ErrorPage';
+import * as DataContext from '../context/DataContext';
+
+vi.mock('../components/context/DataContext.jsx');
 
 function AppWithRoutes() {
   return useRoutes(routes);
 }
 
 describe('Navbar component', () => {
+  beforeEach(() => {
+    vi.spyOn(DataContext, 'useData').mockReturnValue({
+      cartQuantityCounter: 0,
+      items: [],
+      isLoading: false,
+      error: null,
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('renders navigation links correctly', () => {
     const { asFragment } = render(
       <MemoryRouter>
@@ -21,10 +37,10 @@ describe('Navbar component', () => {
     // Snapshot test
     expect(asFragment()).toMatchSnapshot();
 
-    // The links to Home, Shop and Cart are rendered
+    // The links to Home, Shop, and Cart are rendered
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     expect(screen.getByText(/Shop/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cart/i)).toBeInTheDocument();
+    expect(screen.getByText(/Cart: 0/i)).toBeInTheDocument();
   });
 
   it('Home component renders initially', async () => {
