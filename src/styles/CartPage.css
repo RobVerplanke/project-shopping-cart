@@ -1,0 +1,22 @@
+table {
+  padding: 5px;
+  max-width: 600px;
+  text-align: left;
+}
+
+tbody {
+  font-size: 95%;
+  font-style: italic;
+}
+
+tfoot {
+  font-weight: bold;
+}
+
+tfoot tr :nth-child(2) {
+  text-align: right;
+}
+
+tr {
+  font-size: 0.8em;
+}
