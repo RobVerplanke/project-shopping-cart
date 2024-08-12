@@ -4,6 +4,7 @@ import '../../styles/CartPage.css';
 
 function Cart() {
   const { cartItems } = useData();
+  let totalCosts = 0;
 
   return (
     <>
@@ -19,6 +20,7 @@ function Cart() {
         </thead>
         <tbody>
           {cartItems.map((item) => {
+            totalCosts += item.price * item.quantity;
             return (
               <React.Fragment key={item.id}>
                 <tr>
@@ -32,7 +34,7 @@ function Cart() {
                 </tr>
                 <tr>
                   <td>Amount: {item.quantity}</td>
-                  <td>{item.price}</td>
+                  <td>{item.price * item.quantity}</td>
                 </tr>
               </React.Fragment>
             );
@@ -41,8 +43,8 @@ function Cart() {
         <tfoot>
           <tr>
             <td></td>
-            <td>Total costs</td>
-            <td>234,00</td>
+            <td rowSpan={3}>Total</td>
+            <td>{totalCosts.toFixed(2)}</td>
           </tr>
         </tfoot>
       </table>

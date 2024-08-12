@@ -1,6 +1,7 @@
 import '../styles/ProductCard.css';
 
 function createProductCard(item) {
+  // const { title, price, category, image } = item;
   const { title, price, category, image } = item;
 
   return (
