@@ -1,6 +1,6 @@
 table {
   padding: 5px;
-  max-width: 600px;
+  max-width: 800px;
   text-align: left;
 }
 
@@ -18,10 +18,60 @@ tfoot tr :nth-child(2) {
 }
 
 tr {
-  outline: 1px solid red;
   font-size: 0.8em;
 }
 
 td {
-  outline: 1px solid blue;
+  outline: 1px solid rgb(59, 59, 59);
+}
+
+#heading-costs {
+  text-align: center;
+}
+
+#image-column {
+  text-align: center;
+  background-color: white;
+}
+
+#image-column img {
+  margin: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-weight: 600;
+}
+
+.product-description {
+  font-size: 0.8em;
+}
+
+.product-quantity {
+  font-weight: 600;
+}
+
+.product-title,
+.product-description,
+.product-quantity {
+  font-style: normal;
+  padding: 0 10px 0 10px;
+  margin: 5px 0 5px 0;
+}
+
+.product-total {
+  text-align: center;
+}
+
+.cart-total {
+  text-align: center;
+}
+
+.cart-total-price {
+  min-width: 100px;
+  text-align: center;
 }
