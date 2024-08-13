@@ -18,5 +18,10 @@ tfoot tr :nth-child(2) {
 }
 
 tr {
+  outline: 1px solid red;
   font-size: 0.8em;
+}
+
+td {
+  outline: 1px solid blue;
 }
