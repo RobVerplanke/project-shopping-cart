@@ -7,7 +7,17 @@ function Cart() {
   let totalCosts = 0;
 
   // Show message if shopping cart is empty instead of render a empty table
-  if (!cartItems.length) return <p>No items in your schopping cart</p>;
+  if (!cartItems.length)
+    return (
+      <main>
+        <p>No items in your schopping cart</p>
+      </main>
+    );
+
+  // Show message when user clicks on Payment button
+  function handleSubmit() {
+    console.log('not available');
+  }
 
   // Return a new array in which the item with a corresponding id is filtered out
   function handleRemove(itemIdToRemove) {
@@ -74,6 +84,9 @@ function Cart() {
           </tr>
         </tfoot>
       </table>
+      <button id="button-pay" onClick={() => handleSubmit()}>
+        Go to payment
+      </button>
     </main>
   );
 }
