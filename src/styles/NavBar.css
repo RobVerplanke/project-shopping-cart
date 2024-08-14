@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 100vh;
+}
+
+.navbar-items {
+  margin: 10px 0 10px 20px;
+}
+
+.navbar-cart {
+  margin: 10px 20px 10px 0;
+}
+
+.navbar-items ul,
+.navbar-cart ul {
+  list-style: none;
+}
+
+.navbar-items li,
+.navbar-cart li {
+  display: inline;
+}
+
+.navbar-items :nth-child(2) {
+  margin-left: 10px;
+}
