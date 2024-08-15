@@ -34,11 +34,6 @@ main {
   max-width: 1080px;
 }
 
-#button-pay {
-  align-self: flex-end;
-  margin: 10px 0 10px 0;
-}
-
 p {
   font-size: 0.7em;
   color: #ffffff;

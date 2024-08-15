@@ -85,3 +85,8 @@ td {
   min-width: 100px;
   text-align: center;
 }
+
+#button-pay {
+  align-self: flex-end;
+  margin: 10px 0 10px 0;
+}

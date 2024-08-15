@@ -8,7 +8,7 @@ const DataContext = createContext();
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [itemQuantityCounter, setItemQuantityCounter] = useState(0);
+  const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

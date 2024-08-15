@@ -47,8 +47,8 @@ function ProductDetail() {
       }
     });
 
-    // Reset amount of items to zero when items are added
-    setItemQuantityCounter(0);
+    // Reset amount of items to one
+    setItemQuantityCounter(1);
   }
 
   return (
@@ -81,6 +81,7 @@ function ProductDetail() {
             <input
               onChange={handleOnChange}
               type="text"
+              name="item-quantity"
               value={itemQuantityCounter}
             />
             <button type="button" onClick={handleAddQuantity}>
