@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
 import '../../styles/CartPage.css';
 
@@ -19,7 +20,7 @@ function Cart() {
     console.log('not available');
   }
 
-  // Return a new array in which the item with a corresponding id is filtered out
+  // Return a new array in which a item with the corresponding id is filtered out
   function handleRemove(itemIdToRemove) {
     setCartItems(cartItems.filter((item) => item.id != itemIdToRemove));
   }
@@ -84,9 +85,12 @@ function Cart() {
           </tr>
         </tfoot>
       </table>
-      <button id="button-pay" onClick={() => handleSubmit()}>
-        Go to payment
-      </button>
+      <div className="cart-buttons">
+        <Link to="/shop">Back to shop</Link>
+        <button id="button-pay" onClick={() => handleSubmit()}>
+          Go to payment
+        </button>
+      </div>
     </main>
   );
 }

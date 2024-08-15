@@ -1,6 +1,16 @@
+.cart-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-end;
+
+  width: 270px;
+  margin-top: 20px;
+}
+
 table {
   padding: 5px;
-  max-width: 900px;
+  max-width: 1080px;
   text-align: left;
 }
 

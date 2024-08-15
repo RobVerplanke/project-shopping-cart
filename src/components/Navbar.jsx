@@ -16,8 +16,9 @@ function Navbar() {
       </ul>
       <ul className="navbar-cart">
         <li>
-          <Link to="cart">Cart: {cartQuantityCounter}</Link>
+          <Link to="cart">Cart</Link>
         </li>
+        <li>{cartQuantityCounter}</li>
       </ul>
     </nav>
   );

@@ -2,7 +2,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  min-width: 100vh;
+  max-width: 1080px;
 }
 
 .navbar-items {
