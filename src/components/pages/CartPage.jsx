@@ -10,7 +10,7 @@ function Cart() {
   // Show message if shopping cart is empty instead of render a empty table
   if (!cartItems.length)
     return (
-      <main>
+      <main aria-label="Empty schopping cart">
         <p>No items in your schopping cart</p>
       </main>
     );
@@ -26,30 +26,34 @@ function Cart() {
   }
 
   return (
-    <main>
+    <main aria-label="Shopping cart">
       <h2>Cart page</h2>
       <table>
         <caption>Products in your cart</caption>
         <thead>
           <tr>
-            <th>Product</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th id="heading-costs">Costs</th>
+            <th colSpan={3} scope="col">
+              Product
+            </th>
+            <th className="heading-costs" scope="col">
+              Costs
+            </th>
           </tr>
         </thead>
 
         <tbody>
+          {/* Display each item in the shopping cart */}
           {cartItems.map((item) => {
             totalCosts += item.price * item.quantity; // Accumulate the total costs
             return (
               <React.Fragment key={item.id}>
+                {/* Product image */}
                 <tr rowSpan={3}>
-                  <td id="image-column">
+                  <td className="image-column">
                     <img src={item.image} alt="Product image" />
                   </td>
                   <td>
+                    {/* Product complete information */}
                     <div className="product-info">
                       <span className="product-title">{item.title}</span>
                       <span className="product-description">
@@ -60,12 +64,17 @@ function Cart() {
                       </span>
                     </div>
                   </td>
+                  {/* Remove button */}
                   <td>
-                    <button onClick={() => handleRemove(item.id)}>
+                    <button
+                      className="remove-button"
+                      aria-label="Remove from cart"
+                      onClick={() => handleRemove(item.id)}
+                    >
                       Remove
                     </button>
                   </td>
-                  <td></td>
+                  {/* Product price */}
                   <td className="product-total">
                     € {(item.price * item.quantity).toFixed(2)}
                   </td>
@@ -75,19 +84,21 @@ function Cart() {
           })}
         </tbody>
 
+        {/* Display total price */}
         <tfoot>
           <tr>
-            <td></td>
-            <td></td>
-            <td className="cart-total">Total</td>
-            <td></td>
+            <td colSpan={3} className="cart-total-label">
+              TOTAL
+            </td>
             <td className="cart-total-price">€ {totalCosts.toFixed(2)}</td>
           </tr>
         </tfoot>
       </table>
+
+      {/* Link to shop and link to "Payment" */}
       <div className="cart-buttons">
         <Link to="/shop">Back to shop</Link>
-        <button id="button-pay" onClick={() => handleSubmit()}>
+        <button className="button-pay" onClick={() => handleSubmit()}>
           Go to payment
         </button>
       </div>

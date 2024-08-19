@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <main>
+    <main aria-label="Home page">
       <h2>Home page</h2>
     </main>
   );

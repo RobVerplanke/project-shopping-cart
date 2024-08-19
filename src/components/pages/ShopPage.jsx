@@ -6,17 +6,21 @@ import '../../styles/ShopPage.css';
 function Shop() {
   const { items, isLoading, error } = useData();
 
-  // While data is fetching, show loading message or show a error message if fetching failed
+  // Handle situations where the data is not available (yet)
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
 
   return (
-    <main>
+    <main aria-label="Shop page">
       <h2>Shop page</h2>
       <div className="card-holder">
         {/* Itererate through all available products and render each of them on a productcard */}
         {items.map((item) => (
-          <Link key={item.id} to={`product/${item.id}`}>
+          <Link
+            key={item.id}
+            to={`product/${item.id}`}
+            aria-label={`View details for ${item.title}`}
+          >
             {createProductCard(item)}
           </Link>
         ))}

@@ -7,8 +7,11 @@ function createProductCard(item) {
   return (
     <div className="item-card">
       <div className="card-image">
-        <img src={image}></img>
+        {/* Product image */}
+        <img src={image} alt="Product image"></img>
       </div>
+
+      {/* Product title, category and price information */}
       <div className="card-text">
         <h3>{title}</h3>
         <p>
