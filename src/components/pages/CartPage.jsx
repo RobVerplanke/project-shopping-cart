@@ -27,9 +27,8 @@ function Cart() {
 
   return (
     <main aria-label="Shopping cart">
-      <h2>Cart page</h2>
+      <h2>Products in your cart</h2>
       <table>
-        <caption>Products in your cart</caption>
         <thead>
           <tr>
             <th colSpan={3} scope="col">

@@ -5,7 +5,7 @@ import '../styles/NavBar.css';
 function Navbar() {
   const { cartQuantityCounter } = useData();
   return (
-    <nav aria-label="Main navigation">
+    <nav className="navbar" aria-label="Main navigation">
       <ul className="navbar-items">
         <li>
           <Link to="home" aria-label="Go to Home Page">

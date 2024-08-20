@@ -12,7 +12,7 @@ function Shop() {
 
   return (
     <main aria-label="Shop page">
-      <h2>Shop page</h2>
+      <h2>Welcome to our shop...</h2>
       <div className="card-holder">
         {/* Itererate through all available products and render each of them on a productcard */}
         {items.map((item) => (

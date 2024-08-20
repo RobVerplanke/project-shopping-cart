@@ -32,6 +32,7 @@ input {
   color: #1a1a1a;
 }
 
-#add-button {
-  margin-left: 10px;
+.add-button {
+  position: relative;
+  margin-left: 20px;
 }

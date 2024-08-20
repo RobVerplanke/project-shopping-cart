@@ -1,8 +1,6 @@
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 1080px;
+.navbar {
+  border-bottom: 1px solid #4d5763;
+  margin-bottom: 20px;
 }
 
 .navbar-items {
@@ -25,4 +23,12 @@ nav {
 
 .navbar-items :nth-child(2) {
   margin-left: 10px;
+}
+
+.navbar-items li:hover,
+.navbar-cart li:hover {
+  display: inline-block; /* of 'block' als inline-block niet werkt */
+  position: relative; /* Dit zorgt ervoor dat de transformatie werkt */
+  transform: translateY(-1px);
+  /* transition: transform 0.3s ease; */
 }

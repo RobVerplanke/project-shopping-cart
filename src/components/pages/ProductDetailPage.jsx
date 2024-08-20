@@ -116,7 +116,7 @@ function ProductDetail() {
 
             {/* Add to cart button */}
             <button
-              id="add-button"
+              className="add-button"
               aria-label="Add to cart"
               onClick={HandleSubmit}
             >

@@ -8,8 +8,13 @@
   margin-top: 20px;
 }
 
+caption {
+  margin-top: 10px;
+  text-align: start;
+}
+
 table {
-  padding: 5px;
+  padding: 20px 5px 5px 5px;
   max-width: 1080px;
   text-align: left;
 }

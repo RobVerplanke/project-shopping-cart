@@ -8,7 +8,7 @@ function createProductCard(item) {
     <div className="item-card">
       <div className="card-image">
         {/* Product image */}
-        <img src={image} alt="Product image"></img>
+        <img src={image} alt="Product image" />
       </div>
 
       {/* Product title, category and price information */}

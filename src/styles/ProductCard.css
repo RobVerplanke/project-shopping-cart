@@ -1,13 +1,13 @@
 .item-card {
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
   max-width: 230px;
   height: 200px;
-  background-color: rgb(58, 58, 58);
+  background-color: #4d5763;
 }
 
 .card-image {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   height: 70px;
   width: 160px;
