@@ -41,7 +41,6 @@ nav {
 body {
   display: flex;
   place-items: start;
-  min-height: 100vh;
   width: 100vw;
 }
 
@@ -49,7 +48,6 @@ main {
   display: flex;
   flex-direction: column;
   padding: 0 20px 0 20px;
-  min-height: 100vh;
   width: 100vw;
 }
 
@@ -81,6 +79,9 @@ h3 {
   font-size: 0.7em;
 }
 
+h4 {
+  font-size: 0.7em;
+}
 button {
   border-radius: 5px;
   border: 1px solid transparent;
