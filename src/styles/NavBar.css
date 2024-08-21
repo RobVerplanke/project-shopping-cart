@@ -29,6 +29,12 @@
 .navbar-cart li:hover {
   display: inline-block; /* of 'block' als inline-block niet werkt */
   position: relative; /* Dit zorgt ervoor dat de transformatie werkt */
-  transform: translateY(-1px);
-  /* transition: transform 0.3s ease; */
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+.counter-holder {
+  background-color: red;
+  min-width: 50px;
+  min-height: 30px;
 }

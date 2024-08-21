@@ -24,7 +24,7 @@ function Navbar() {
             Cart
           </Link>
         </li>
-        <li>{cartQuantityCounter}</li>
+        <span className="counter-holder">{cartQuantityCounter}</span>
       </ul>
     </nav>
   );

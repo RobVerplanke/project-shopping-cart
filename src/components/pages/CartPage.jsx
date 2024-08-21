@@ -93,7 +93,6 @@ function Cart() {
           </tr>
         </tfoot>
       </table>
-
       {/* Link to shop and link to "Payment" */}
       <div className="cart-buttons">
         <Link to="/shop">Back to shop</Link>
