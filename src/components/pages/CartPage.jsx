@@ -17,7 +17,7 @@ function Cart() {
 
   // Show message when user clicks on Payment button
   function handleSubmit() {
-    console.log('not available');
+    alert('Sorry, this is a front-end app only');
   }
 
   // Return a new array in which a item with the corresponding id is filtered out

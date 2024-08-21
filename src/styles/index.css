@@ -30,7 +30,6 @@
 header {
   background-color: var(--primary-color);
   min-height: 100px;
-  width: auto;
 }
 
 nav {
@@ -43,6 +42,7 @@ body {
   display: flex;
   place-items: start;
   min-height: 100vh;
+  width: 100vw;
 }
 
 main {
@@ -50,6 +50,7 @@ main {
   flex-direction: column;
   padding: 0 20px 0 20px;
   min-height: 100vh;
+  width: 100vw;
 }
 
 p {

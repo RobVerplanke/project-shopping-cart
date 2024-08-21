@@ -88,9 +88,10 @@ function ProductDetail() {
           </div>
 
           {/* Subtract from quantity input */}
-          <div className="product-add">
+          <div>
             <button
               type="button"
+              className="adjust-quantity-button"
               aria-label="Subtract item"
               onClick={handleSubtractQuantity}
             >
@@ -108,6 +109,7 @@ function ProductDetail() {
             {/* Add to quantity input */}
             <button
               type="button"
+              className="adjust-quantity-button"
               aria-label="Add item"
               onClick={handleAddQuantity}
             >
@@ -120,7 +122,7 @@ function ProductDetail() {
               aria-label="Add to cart"
               onClick={HandleSubmit}
             >
-              Add
+              Add to cart
             </button>
           </div>
         </div>
