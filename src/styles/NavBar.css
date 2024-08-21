@@ -8,7 +8,7 @@
 }
 
 .navbar-cart {
-  margin: 10px 20px 10px 0;
+  margin: 15px 20px 5px 0;
 }
 
 .navbar-items ul,
@@ -31,10 +31,4 @@
   position: relative; /* Dit zorgt ervoor dat de transformatie werkt */
   transform: translateY(-2px);
   transition: transform 0.3s ease;
-}
-
-.counter-holder {
-  background-color: red;
-  min-width: 50px;
-  min-height: 30px;
 }

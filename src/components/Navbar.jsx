@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext';
+import { Badge } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../styles/NavBar.css';
 
 function Navbar() {
@@ -21,10 +23,11 @@ function Navbar() {
       <ul className="navbar-cart">
         <li>
           <Link to="cart" aria-label="Go to Shopping Cart">
-            Cart
+            <Badge badgeContent={cartQuantityCounter} color="info">
+              <ShoppingCartIcon />
+            </Badge>
           </Link>
         </li>
-        <span className="counter-holder">{cartQuantityCounter}</span>
       </ul>
     </nav>
   );
