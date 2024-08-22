@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Badge } from '@mui/material';
 import Instagram from '@mui/icons-material/Instagram';
 import Facebook from '@mui/icons-material/Facebook';
 import X from '@mui/icons-material/X';
@@ -71,19 +70,13 @@ function Footer() {
         </div>
         <div className="footer-right">
           <Link to="">
-            <Badge>
-              <Facebook />
-            </Badge>
+            <Facebook />
           </Link>
           <Link to="">
-            <Badge>
-              <Instagram />
-            </Badge>
+            <Instagram />
           </Link>
           <Link to="">
-            <Badge>
-              <X />
-            </Badge>
+            <X />
           </Link>
         </div>
       </div>
