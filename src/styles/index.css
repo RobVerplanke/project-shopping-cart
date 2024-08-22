@@ -1,17 +1,23 @@
+/* Reset styling */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Custom properties */
+
 :root {
-  /* Custom properties */
   --primary-color: #4d5763;
   --secondary-color: #4fb7ec;
   --background-color: #242424;
+  --background-color-light: #ffffff;
   --text-color: rgba(255, 255, 255, 0.87);
+  --text-color-light: #213547;
   --link-color: #007bff;
   --link-hover-color: #8291a0;
+  --button-color-light: #f9f9f9;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.3;
@@ -19,12 +25,25 @@
 
   color-scheme: light dark;
   color: var(--text-color);
-  background-color: #242424;
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global layout */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 header {
@@ -38,22 +57,16 @@ nav {
   justify-content: space-between;
 }
 
-body {
-  display: flex;
-  place-items: start;
-  width: 100vw;
+main {
+  flex: 1;
+  padding: 0 10px 10px 10px;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  padding: 0 20px 0 20px;
-  width: 100vw;
-}
+/* Elements */
 
 p {
   font-size: 0.7em;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 a {
@@ -61,6 +74,7 @@ a {
   color: var(--link-hover-color);
   text-decoration: inherit;
 }
+
 a:hover {
   color: var(--secondary-color);
 }
@@ -82,6 +96,7 @@ h3 {
 h4 {
   font-size: 0.7em;
 }
+
 button {
   border-radius: 5px;
   border: 1px solid transparent;
@@ -93,9 +108,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: var(--secondary-color);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -105,15 +122,17 @@ button:focus:active {
   transform: scale(0.95);
 }
 
+/* Queries */
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-color-light);
+    background-color: var(--background-color-light);
   }
   a:hover {
-    color: #747bff;
+    color: var(--secondary-color);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--button-color-light);
   }
 }

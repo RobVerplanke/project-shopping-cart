@@ -1,5 +1,10 @@
+/* Custom properties */
+:root {
+  --primary-color: #4d5763;
+}
+
 .navbar {
-  border-bottom: 1px solid #4d5763;
+  border-bottom: 1px solid var(--primary-color);
   margin-bottom: 20px;
 }
 
@@ -27,8 +32,8 @@
 
 .navbar-items li:hover,
 .navbar-cart li:hover {
-  display: inline-block; /* of 'block' als inline-block niet werkt */
-  position: relative; /* Dit zorgt ervoor dat de transformatie werkt */
+  display: inline-block;
+  position: relative;
   transform: translateY(-2px);
   transition: transform 0.3s ease;
 }

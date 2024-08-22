@@ -1,3 +1,10 @@
+/* Custom properties */
+:root {
+  --primary-color: #4d5763;
+  --background-color: white;
+  --outline-color: #3b3b3b;
+}
+
 .cart-buttons {
   display: flex;
   align-items: center;
@@ -27,7 +34,7 @@ tr {
 }
 
 td {
-  outline: 1px solid rgb(59, 59, 59);
+  outline: 1px solid var(--outline-color);
 }
 
 .heading-costs {
@@ -36,7 +43,7 @@ td {
 
 .image-column {
   text-align: center;
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 .image-column img {
