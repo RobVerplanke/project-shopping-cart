@@ -84,7 +84,7 @@ function ProductDetail() {
           </div>
           <div className="product-price">
             {'\u20AC'}
-            <h4>{activeItem.price}</h4>
+            <h4>{activeItem.price.toFixed(2)}</h4>
           </div>
 
           {/* Subtract from quantity input */}

@@ -26,7 +26,7 @@ function Cart() {
   }
 
   return (
-    <main aria-label="Shopping cart">
+    <main className="main-content-cart" aria-label="Shopping cart">
       <h2>Products in your cart</h2>
       <table>
         <thead>

@@ -1,11 +1,11 @@
 /* Custom properties */
 :root {
   --primary-color: #4d5763;
-  --background-color: white;
+  --img-background-color: white;
   --outline-color: #3b3b3b;
 }
 
-main {
+.main-content-cart {
   max-width: 1024px;
 }
 
@@ -45,7 +45,7 @@ td {
 
 .image-column {
   text-align: center;
-  background-color: var(--background-color);
+  background-color: var(--img-background-color);
 }
 
 .image-column img {

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Instagram from '@mui/icons-material/Instagram';
 import Facebook from '@mui/icons-material/Facebook';
 import X from '@mui/icons-material/X';
+import GitHub from '@mui/icons-material/GitHub';
 
 import '../styles/Footer.css';
 
@@ -64,7 +65,11 @@ function Footer() {
         </div>
       </div>
       <div className="icons-holder">
-        <div className="footer-left"></div>
+        <div className="footer-left">
+          <Link target="_blank" to="https://github.com/RobVerplanke">
+            <GitHub />
+          </Link>
+        </div>
         <div className="footer-center">
           <p>© 2024 MultiShopee All Rights are Reseverd</p>
         </div>

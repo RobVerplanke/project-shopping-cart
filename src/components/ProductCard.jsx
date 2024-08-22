@@ -20,7 +20,7 @@ function createProductCard(item) {
       </div>
       <div className="card-price">
         <p>
-          {'\u20AC'} {price}
+          {'\u20AC'} {price.toFixed(2)}
         </p>
       </div>
     </div>

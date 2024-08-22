@@ -16,15 +16,15 @@ footer {
 }
 
 .footer-container {
+  max-width: 1024px;
+
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .footer-column {
-  flex: 1;
   margin: 0 15px;
 }
 
@@ -52,10 +52,10 @@ footer {
 
 .icons-holder {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   border-top: 1px solid var(--primary-color);
-  padding-top: 10px;
+  padding: 10px 10px 0 10px;
   margin-top: 10px;
 }
 
@@ -65,5 +65,9 @@ footer {
 }
 
 .footer-center p {
+  color: var(--primary-color);
+}
+
+.footer-left p {
   color: var(--primary-color);
 }
