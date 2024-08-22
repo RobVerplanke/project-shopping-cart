@@ -66,6 +66,7 @@ function Footer() {
       </div>
       <div className="icons-holder">
         <div className="footer-left">
+          <p>Created by</p>
           <Link target="_blank" to="https://github.com/RobVerplanke">
             <GitHub />
           </Link>

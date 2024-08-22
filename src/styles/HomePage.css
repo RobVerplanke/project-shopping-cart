@@ -21,10 +21,10 @@
 
 .trending-items-holder,
 .new-items-holder {
-  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 80px;
 }
 
 .new-items-holder {
