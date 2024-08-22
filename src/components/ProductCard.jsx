@@ -13,7 +13,7 @@ function createProductCard(item) {
 
       {/* Product title, category and price information */}
       <div className="card-text">
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <p>
           <i>{category}</i>
         </p>

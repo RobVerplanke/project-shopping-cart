@@ -9,7 +9,10 @@
   padding: 10px;
   max-width: 230px;
   height: 200px;
-  background-color: var(--background-color-card);
+  border-left: 1px solid var(--background-color-card);
+  border-right: 1px solid var(--background-color-card);
+
+  /* background-color: var(--background-color-card); */
 }
 
 .card-image {
@@ -20,6 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .card-text {
