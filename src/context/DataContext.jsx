@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from 'react';
-import getShopData from '../api/shopApi';
+import { getShopData } from '../api/shopApi';
 
 const DataContext = createContext();
 
@@ -19,7 +19,14 @@ export function DataProvider({ children }) {
   );
 
   // Get a limited amount of fake products from fakestoreapi.com
-  useEffect(() => getShopData(setItems, setError, setIsLoading), []);
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      await getShopData(setItems, setError, setIsLoading);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <DataContext.Provider
