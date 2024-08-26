@@ -67,21 +67,25 @@ function Footer() {
       <div className="icons-holder">
         <div className="footer-left">
           <p>Created by</p>
-          <Link target="_blank" to="https://github.com/RobVerplanke">
-            <GitHub />
+          <Link
+            target="_blank"
+            to="https://github.com/RobVerplanke"
+            aria-label="github"
+          >
+            <GitHub data-testid="github-icon" />
           </Link>
         </div>
         <div className="footer-center">
           <p>© 2024 MultiShopee All Rights are Reseverd</p>
         </div>
         <div className="footer-right">
-          <Link to="">
+          <Link to="" data-testid="facebook-link">
             <Facebook />
           </Link>
-          <Link to="">
+          <Link to="" data-testid="instagram-link">
             <Instagram />
           </Link>
-          <Link to="">
+          <Link to="" data-testid="x-link">
             <X />
           </Link>
         </div>
