@@ -25,16 +25,17 @@ function ProductDetail() {
     setItemQuantityCounter(parseInt(e.target.value));
   }
 
-  // Increase the value in the quantity input field by one
-  function handleAddQuantity() {
-    setItemQuantityCounter(itemQuantityCounter + 1);
-  }
-
-  // Decrease the value in the quantity input field by one
-  function handleSubtractQuantity() {
-    if (itemQuantityCounter >= 1)
-      setItemQuantityCounter(itemQuantityCounter - 1);
-  }
+  // Add or subtract one to/from the quantity count value
+  const handleAdjustQuantity = (action) => {
+    setItemQuantityCounter((prevValue) => {
+      if (action === 'add') {
+        return prevValue + 1;
+      } else if (action === 'subtract') {
+        return Math.max(prevValue - 1, 1);
+      }
+      return prevValue;
+    });
+  };
 
   // Add or update current item in list with cart items
   function HandleSubmit() {
@@ -66,7 +67,7 @@ function ProductDetail() {
       <div className="details-container">
         {/* Product image */}
         <div className="product-image">
-          <img src={activeItem.image} alt="Product image" />
+          <img src={activeItem.image} alt={activeItem.title} />
         </div>
 
         {/* Product title, category label, full description, price and quantity input*/}
@@ -93,7 +94,7 @@ function ProductDetail() {
               type="button"
               className="adjust-quantity-button"
               aria-label="Subtract item"
-              onClick={handleSubtractQuantity}
+              onClick={() => handleAdjustQuantity('subtract')}
             >
               -
             </button>
@@ -111,7 +112,7 @@ function ProductDetail() {
               type="button"
               className="adjust-quantity-button"
               aria-label="Add item"
-              onClick={handleAddQuantity}
+              onClick={() => handleAdjustQuantity('add')}
             >
               +
             </button>

@@ -7,11 +7,12 @@ import '../../styles/HomePage.css';
 function Home() {
   const { items } = useData();
 
-  // Select first 5 products as 'New Items'
-  function getNewItems() {
-    const newItems = items.slice(0, MAX_NEW_ITEMS);
+  // Helper function to generate product cards
+  function generateItemCards(startIndex, itemCount) {
+    const selectedItems = items.slice(startIndex, startIndex + itemCount);
 
-    const newItemCards = newItems.map((item) => (
+    // Make the card link to the Product page
+    return selectedItems.map((item) => (
       <Link
         key={item.id}
         to={`../shop/product/${item.id}`}
@@ -20,23 +21,6 @@ function Home() {
         {createProductCard(item)}
       </Link>
     ));
-    return newItemCards;
-  }
-
-  // Select products 5 to 10 as 'Trending items'
-  function getTrendingItems() {
-    const trendingItems = items.slice(5, MAX_TRENDING_ITEMS + 5);
-
-    const trendingItemCards = trendingItems.map((item) => (
-      <Link
-        key={item.id}
-        to={`../shop/product/${item.id}`}
-        aria-label={`View details for ${item.title}`}
-      >
-        {createProductCard(item)}
-      </Link>
-    ));
-    return trendingItemCards;
   }
 
   return (
@@ -58,14 +42,16 @@ function Home() {
           <div className="trending-items-title">
             <h2>Trending</h2>
           </div>
-          <div className="trending-items">{getTrendingItems()}</div>
+          <div className="trending-items">
+            {generateItemCards(0, MAX_TRENDING_ITEMS)}
+          </div>
         </div>
 
         <div className="new-items-holder">
           <div className="new-items-title">
             <h2>Top new items</h2>
           </div>
-          <div className="new-items">{getNewItems()}</div>
+          <div className="new-items">{generateItemCards(5, MAX_NEW_ITEMS)}</div>
         </div>
       </div>
     </main>
