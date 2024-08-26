@@ -4,7 +4,7 @@ import { MemoryRouter, useRoutes } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Navbar from '../components/Navbar';
 import routes from '../components/routes';
-// import ErrorPage from '../components/pages/ErrorPage';
+import { mockedItems } from './__mocks__/mockCartItems.js';
 import * as DataContext from '../context/DataContext';
 
 vi.mock('../components/context/DataContext.jsx');
@@ -40,7 +40,7 @@ describe('Navbar component', () => {
     // The links to Home, Shop, and Cart are rendered
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     expect(screen.getByText(/Shop/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cart: 0/i)).toBeInTheDocument();
+    expect(screen.getByLabelText('Go to Shopping Cart')).toBeInTheDocument();
   });
 
   it('Home component renders initially', async () => {
@@ -51,7 +51,9 @@ describe('Navbar component', () => {
     );
 
     // Home page is rendered
-    expect(screen.getByText(/Home page/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Your new favorite place to shop!/i)
+    ).toBeInTheDocument();
   });
 
   it('Loads Shop component after click on the Shop button', async () => {
@@ -64,16 +66,24 @@ describe('Navbar component', () => {
     );
 
     // Simulate a click on the Shop button
-    await user.click(screen.getByText(/Shop/i));
+    await user.click(screen.getByLabelText('Go to Shop Page'));
 
     // Shop page title is rendered after loading items
     await waitFor(() =>
-      expect(screen.getByText(/Shop page/i)).toBeInTheDocument()
+      expect(
+        screen.getByText('Discover our latest selections...')
+      ).toBeInTheDocument()
     );
   });
 
   it('Loads Cart component after click on the Cart button', async () => {
     const user = userEvent.setup();
+
+    // Mock products to render homepage and mock products in cart to render cartpage
+    vi.spyOn(DataContext, 'useData').mockReturnValue({
+      items: mockedItems,
+      cartItems: mockedItems,
+    });
 
     render(
       <MemoryRouter initialEntries={['/']}>
@@ -82,24 +92,23 @@ describe('Navbar component', () => {
     );
 
     // Simulate a click on the Cart button
-    await user.click(screen.getByText(/Cart/i));
+    await user.click(screen.getByLabelText('Go to Shopping Cart'));
 
     // Cart page is rendered
-    expect(screen.getByText(/Cart page/i)).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByText('Products in your cart')).toBeInTheDocument()
+    );
   });
 
   // it('Loads error page on invalid route', async () => {
   //   render(
-  //     <MemoryRouter initialEntries={['/invalid-route']}>
-  //       <Routes>
-  //         <Route path="/*" element={<AppWithRoutes />} />
-  //         <Route path="*" element={<ErrorPage />} />
-  //       </Routes>
+  //     <MemoryRouter initialEntries={['/invalid-path']}>
+  //       <AppWithRoutes />
   //     </MemoryRouter>
   //   );
 
   //   await waitFor(() => {
-  //     expect(screen.getByText(/Error page/i)).toBeInTheDocument();
+  //     expect(screen.getByText('Error page')).toBeInTheDocument();
   //   });
   // });
 });

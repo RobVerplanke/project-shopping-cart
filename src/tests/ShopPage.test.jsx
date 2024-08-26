@@ -53,10 +53,12 @@ describe('ShopPage component', () => {
         {
           id: 1,
           title: 'product 1',
+          price: 10,
         },
         {
           id: 2,
           title: 'product 2',
+          price: 20,
         },
       ],
       isLoading: false,
@@ -70,7 +72,9 @@ describe('ShopPage component', () => {
     );
 
     // Shop page renderd succesfully
-    expect(screen.getByText('Shop page')).toBeInTheDocument();
+    expect(
+      screen.getByText('Discover our latest selections...')
+    ).toBeInTheDocument();
     expect(screen.getByText('product 1')).toBeInTheDocument();
     expect(screen.getByText('product 2')).toBeInTheDocument();
   });
