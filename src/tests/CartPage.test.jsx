@@ -23,7 +23,7 @@ describe('CartPage component', () => {
     );
 
     expect(
-      screen.getByText(/No items in your schopping cart/i)
+      screen.getByText(/No items in your shopping cart/i)
     ).toBeInTheDocument();
   });
 
