@@ -7,23 +7,9 @@ import '../../styles/HomePage.css';
 function Home() {
   const { items } = useData();
 
-  function getTrendingItems() {
-    const trendingItems = items.slice(0, MAX_TRENDING_ITEMS);
-
-    const trendingItemCards = trendingItems.map((item) => (
-      <Link
-        key={item.id}
-        to={`../shop/product/${item.id}`}
-        aria-label={`View details for ${item.title}`}
-      >
-        {createProductCard(item)}
-      </Link>
-    ));
-    return trendingItemCards;
-  }
-
+  // Select first 5 products as 'New Items'
   function getNewItems() {
-    const newItems = items.slice(5, MAX_NEW_ITEMS + 5);
+    const newItems = items.slice(0, MAX_NEW_ITEMS);
 
     const newItemCards = newItems.map((item) => (
       <Link
@@ -35,6 +21,22 @@ function Home() {
       </Link>
     ));
     return newItemCards;
+  }
+
+  // Select products 5 to 10 as 'Trending items'
+  function getTrendingItems() {
+    const trendingItems = items.slice(5, MAX_TRENDING_ITEMS + 5);
+
+    const trendingItemCards = trendingItems.map((item) => (
+      <Link
+        key={item.id}
+        to={`../shop/product/${item.id}`}
+        aria-label={`View details for ${item.title}`}
+      >
+        {createProductCard(item)}
+      </Link>
+    ));
+    return trendingItemCards;
   }
 
   return (

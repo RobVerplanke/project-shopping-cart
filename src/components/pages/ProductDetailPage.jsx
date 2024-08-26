@@ -62,7 +62,7 @@ function ProductDetail() {
 
   return (
     <main aria-label="Product details">
-      <h1>Product information</h1>
+      <h2>Product information</h2>
       <div className="details-container">
         {/* Product image */}
         <div className="product-image">
@@ -72,7 +72,7 @@ function ProductDetail() {
         {/* Product title, category label, full description, price and quantity input*/}
         <div className="product-text">
           <div>
-            <h2>{activeItem.title}</h2>
+            <h3>{activeItem.title}</h3>
           </div>
           <div>
             <p>
