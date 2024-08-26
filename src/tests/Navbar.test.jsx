@@ -1,11 +1,17 @@
 import { vi, describe, it, expect, afterEach, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, useRoutes } from 'react-router-dom';
+import { MemoryRouter, useRoutes, Routes, Route } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import Navbar from '../components/Navbar';
 import routes from '../components/routes';
 import { mockedItems } from './__mocks__/mockCartItems.js';
 import * as DataContext from '../context/DataContext';
+import ErrorPage from '../components/pages/ErrorPage';
+import Navbar from '../components/Navbar';
+import Home from '../components/pages/HomePage';
+import ProductDetail from '../components/pages/ProductDetailPage';
+import Cart from '../components/pages/CartPage';
+import Shop from '../components/pages/ShopPage';
+import App from '../App';
 
 vi.mock('../components/context/DataContext.jsx');
 
@@ -100,15 +106,25 @@ describe('Navbar component', () => {
     );
   });
 
-  // it('Loads error page on invalid route', async () => {
-  //   render(
-  //     <MemoryRouter initialEntries={['/invalid-path']}>
-  //       <AppWithRoutes />
-  //     </MemoryRouter>
-  //   );
+  // Shows error page when url path is invalid
+  it('Loads error page on invalid route', async () => {
+    render(
+      <MemoryRouter initialEntries={['/invalid-path']}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="shop/product/:id" element={<ProductDetail />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
 
-  //   await waitFor(() => {
-  //     expect(screen.getByText('Error page')).toBeInTheDocument();
-  //   });
-  // });
+    await waitFor(() => {
+      expect(screen.getByText('Error page')).toBeInTheDocument();
+    });
+  });
 });
