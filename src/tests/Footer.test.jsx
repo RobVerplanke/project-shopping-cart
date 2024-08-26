@@ -5,32 +5,35 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('Footer Component', () => {
   it('renders the footer with the links', () => {
+    // Collection of all links in the Footer component
+    const linkList = [
+      'About us',
+      'Customer Service',
+      'Legal',
+      'Our Story',
+      'Meet the Team',
+      'Careers',
+      'Contact Us',
+      'FAQ',
+      'Returns & Replacements',
+      'Shipping Information',
+      'Support',
+      'Terms of Service',
+      'Privacy Policy',
+      'Cookie Policy',
+      'Sitemap',
+    ];
+
     render(
       <MemoryRouter>
         <Footer />
       </MemoryRouter>
     );
 
-    // The column headings are rendered
-    expect(screen.getByText(/About us/i)).toBeInTheDocument();
-    expect(screen.getByText(/Customer Service/i)).toBeInTheDocument();
-    expect(screen.getByText(/Legal/i)).toBeInTheDocument();
-
-    // The links are rendered
-    expect(screen.getByText(/Our Story/i)).toBeInTheDocument();
-    expect(screen.getByText(/Meet the Team/i)).toBeInTheDocument();
-    expect(screen.getByText(/Careers/i)).toBeInTheDocument();
-    expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
-
-    expect(screen.getByText(/FAQ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Returns & Replacements/i)).toBeInTheDocument();
-    expect(screen.getByText(/Shipping Information/i)).toBeInTheDocument();
-    expect(screen.getByText(/Support/i)).toBeInTheDocument();
-
-    expect(screen.getByText(/Terms of Service/i)).toBeInTheDocument();
-    expect(screen.getByText(/Privacy Policy/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cookie Policy/i)).toBeInTheDocument();
-    expect(screen.getByText(/Sitemap/i)).toBeInTheDocument();
+    // // The column headings and links are rendered
+    linkList.forEach((link) => {
+      expect(screen.getByText(new RegExp(link, 'i'))).toBeInTheDocument();
+    });
 
     // Github link is rendered correctly
     const githubIcon = screen.getByTestId('github-icon');
