@@ -9,6 +9,7 @@ vi.mock('../components/context/DataContext.jsx');
 describe('CartPage component', () => {
   afterEach(() => vi.clearAllMocks());
 
+  // Shows message if cart is empty
   it(`Doesn't render a empty table when cart is empty`, () => {
     vi.spyOn(DataContext, 'useData').mockReturnValue({
       cartItems: [],
@@ -27,6 +28,7 @@ describe('CartPage component', () => {
     ).toBeInTheDocument();
   });
 
+  // Items in the cart are rendered
   it('renders items in cart', async () => {
     // Mock useData return value
     vi.spyOn(DataContext, 'useData').mockReturnValue({
