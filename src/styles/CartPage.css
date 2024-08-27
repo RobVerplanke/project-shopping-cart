@@ -1,6 +1,6 @@
 /* Custom properties */
 :root {
-  --img-background-color: white;
+  --img-background-color: #ffffff;
   --outline-color: #3b3b3b;
 }
 
@@ -37,7 +37,7 @@ td {
 
 .image-cell {
   text-align: center;
-  background-color: var(--img-background-color);
+  background-color: var(--img-background-color, #ffffff);
 }
 
 .image-cell img {

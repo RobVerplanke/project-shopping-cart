@@ -1,7 +1,7 @@
 /* Custom properties */
 :root {
   --background-color-card: rgb(77, 87, 99, 0.2);
-  --image-holder-color: white;
+  --image-holder-color: #ffffff;
 }
 
 .item-card {
@@ -15,7 +15,7 @@
 
 .card-image-holder {
   border-radius: 5px;
-  background-color: var(--image-holder-color);
+  background-color: var(--image-holder-color, #ffffff);
   height: 70px;
   width: 160px;
   display: flex;
