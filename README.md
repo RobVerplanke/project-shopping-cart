@@ -4,7 +4,7 @@ This project is part of [The Odin Project](https://www.theodinproject.com) curri
 
 ## Introduction
 
-This project demonstrates the use of React for building a mock shopping cart application. It includes features such as routing, state management, PropTypes for type checking, data fetching from an API, and component testing with React Testing Library. Components are styled using CSS Modules to ensure that the styles are scoped locally and do not conflict with other components.
+This project demonstrates the use of React for building a mock shopping cart application. It includes features such as routing, state management, data fetching from an API, and component testing with React Testing Library. Components are styled using CSS Modules to ensure that the styles are scoped locally and do not conflict with other components.
 
 ## Features
 
@@ -21,6 +21,5 @@ This project demonstrates the use of React for building a mock shopping cart app
 
 - React
 - React Router
-- PropTypes
 - React Testing Library
 - CSS Modules
