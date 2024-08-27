@@ -15,7 +15,7 @@
 
 .card-image-holder {
   border-radius: 5px;
-  background-color: var(--image-holder-color, #ffffff);
+  background-color: var(--image-holder-color, #ffffff) !important;
   height: 70px;
   width: 160px;
   display: flex;

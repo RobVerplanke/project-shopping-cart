@@ -37,7 +37,7 @@ td {
 
 .image-cell {
   text-align: center;
-  background-color: var(--img-background-color, #ffffff);
+  background-color: var(--img-background-color, #ffffff) !important;
 }
 
 .image-cell img {
