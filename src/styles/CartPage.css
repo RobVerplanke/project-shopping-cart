@@ -1,6 +1,5 @@
 /* Custom properties */
 :root {
-  --primary-color: #4d5763;
   --img-background-color: white;
   --outline-color: #3b3b3b;
 }
@@ -36,12 +35,12 @@ td {
   text-align: center;
 }
 
-.image-column {
+.image-cell {
   text-align: center;
   background-color: var(--img-background-color);
 }
 
-.image-column img {
+.image-cell img {
   margin: 10px;
 }
 

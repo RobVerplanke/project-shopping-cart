@@ -49,7 +49,7 @@ function Cart() {
           {cartItems.map((item) => (
             <tr key={item.id} rowSpan={3}>
               {/* Product image */}
-              <td className="image-column">
+              <td className="image-cell">
                 <img src={item.image} alt={`Image of ${item.title}`} />
               </td>
               {/* Product complete information */}

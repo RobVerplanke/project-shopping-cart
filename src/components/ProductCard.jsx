@@ -6,7 +6,7 @@ function createProductCard(item) {
 
   return (
     <div className="item-card">
-      <div className="card-image">
+      <div className="card-image-holder">
         {/* Product image */}
         <img src={image} alt="Product image" />
       </div>
