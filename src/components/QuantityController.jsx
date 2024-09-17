@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useData } from '../context/DataContext';
 
 import '../styles/QuantityController.css';
 
 function QuantityController({ item }) {
   const { id, quantity } = item.value;
-  const { setCartItems, itemQuantityCounter, setItemQuantityCounter } =
-    useData();
+  const { setCartItems } = useData();
+
+  const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
 
   // Update value of input field
   useEffect(() => {

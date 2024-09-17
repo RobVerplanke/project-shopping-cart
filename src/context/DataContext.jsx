@@ -12,7 +12,6 @@ export function DataProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
 
   // Calculate total amount of items in cart
   const cartQuantityCounter = cartItems.reduce(
@@ -37,8 +36,6 @@ export function DataProvider({ children }) {
         cartItems,
         setCartItems,
         cartQuantityCounter,
-        itemQuantityCounter,
-        setItemQuantityCounter,
         error,
         isLoading,
       }}
