@@ -1,0 +1,26 @@
+.home-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0 0 0;
+  color: var(--text-color);
+}
+
+.home-content-container__home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 100;
+}
+
+.home-content-container__trending-items-holder,
+.home-content-container__top-items-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.home-content-container__shop-now-button {
+  margin-top: 70px;
+}

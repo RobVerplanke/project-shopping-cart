@@ -1,0 +1,27 @@
+.page-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto 40px 1fr auto;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.page-container__header {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.page-container__navbar {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.page-container__main-content {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.page-container__footer {
+  grid-column: 2;
+  grid-row: 4;
+}

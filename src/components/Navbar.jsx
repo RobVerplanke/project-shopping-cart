@@ -7,16 +7,16 @@ import '../styles/NavBar.css';
 function Navbar() {
   const { cartQuantityCounter } = useData();
   return (
-    <nav className="navbar" aria-label="Main navigation">
+    <nav aria-label="Main navigation">
       <ul className="navbar-items">
         <li>
           <Link to="home" aria-label="Go to Home Page">
-            Home
+            HOME
           </Link>
         </li>
         <li>
           <Link to="shop" aria-label="Go to Shop Page">
-            Shop
+            SHOP
           </Link>
         </li>
       </ul>
@@ -24,7 +24,7 @@ function Navbar() {
         <li>
           <Link to="cart" aria-label="Go to Shopping Cart">
             <Badge badgeContent={cartQuantityCounter} color="info">
-              <ShoppingCartIcon />
+              <ShoppingCartIcon fontSize="large" />
             </Badge>
           </Link>
         </li>

@@ -1,39 +1,64 @@
 /* Custom properties */
 :root {
-  --primary-color: #4d5763;
+  --secondary-color: #a200a5;
 }
 
-.navbar {
-  border-bottom: 1px solid var(--primary-color);
-  margin-bottom: 20px;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+  font-size: 1.5em;
+  color: var(--text-nav-color);
+  background-color: var(--secondary-color);
 }
 
 .navbar-items {
-  margin: 10px 0 10px 30px;
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 3px 0 0 10px;
+  color: var(--text-color-light);
 }
 
 .navbar-cart {
-  margin: 15px 30px 5px 0;
-}
-
-.navbar-items ul,
-.navbar-cart ul {
+  margin: 10px 15px 0 0;
   list-style: none;
+  color: var(--text-color-light);
 }
 
-.navbar-items li,
-.navbar-cart li {
-  display: inline;
+.navbar-items li:after,
+.navbar-items li:before {
+  content: '';
+  width: 0%;
+  display: block;
+  height: 1px;
+  transition: all 0.3s ease;
+  margin-top: 2px;
+  transition: all 300ms ease-in;
 }
 
-.navbar-items :nth-child(2) {
-  margin-left: 10px;
+.navbar-items li:after {
+  bottom: 25%;
+  left: 0;
 }
 
-.navbar-items li:hover,
-.navbar-cart li:hover {
-  display: inline-block;
-  position: relative;
-  transform: translateY(-2px);
-  transition: transform 0.3s ease;
+.navbar-items li:before {
+  top: 25%;
+  right: 0;
+}
+
+.navbar-items li:hover::after {
+  width: 100%;
+  height: 1px;
+  bottom: 25%;
+  background-color: #fff;
+}
+.navbar-items li:hover::before {
+  width: 100%;
+  height: 1px;
+  top: 25%;
+  background-color: #fff;
 }

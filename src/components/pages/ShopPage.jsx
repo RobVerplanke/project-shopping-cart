@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import createProductCard from '../ProductCard';
-import '../../styles/ShopPage.css';
+import ShopItemCard from '../ShopItemCard.jsx';
+
+import '../../styles/pages/ShopPage.css';
 
 function Shop() {
   const { items, isLoading, error } = useData();
@@ -13,16 +13,10 @@ function Shop() {
   return (
     <main aria-label="Shop page">
       <h2>Discover our latest selections...</h2>
-      <div className="card-holder">
+      <div className="shop-content-holder">
         {/* Itererate through all available products and render each of them on a productcard */}
         {items.map((item) => (
-          <Link
-            key={item.id}
-            to={`product/${item.id}`}
-            aria-label={`View details for ${item.title}`}
-          >
-            {createProductCard(item)}
-          </Link>
+          <ShopItemCard key={item.id} item={item} />
         ))}
       </div>
     </main>

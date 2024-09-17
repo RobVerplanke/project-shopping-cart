@@ -1,0 +1,19 @@
+:root {
+  --selection-title-color: #a200a5;
+}
+
+.top-items-title {
+  align-self: baseline;
+  margin-bottom: 20px;
+}
+
+.top-items-title h2 {
+  color: var(--selection-title-color);
+}
+
+.top-items {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  flex-wrap: wrap;
+}

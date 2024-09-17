@@ -1,0 +1,70 @@
+/* Custom properties */
+:root {
+  --summary-bg-color: #d8d8d8;
+  --line-through-color: red;
+}
+
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px 10px 15px;
+  background-color: var(--summary-bg-color);
+}
+
+.summary-container__title {
+  font-weight: 700;
+  padding: 0 0 10px 0;
+}
+.summary-container__items-total-price,
+.summary-container__delivery-costs__delivery-message {
+  margin-bottom: 20px;
+}
+
+.summary-container__items-total-price,
+.summary-container__delivery-costs {
+  padding: 10px 5px 10px 5px;
+  background-color: #aaaaaa;
+}
+
+.summary-container__items-total-price,
+.summary-container__delivery-costs,
+.summary-container__total-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-container__delivery-costs__delivery-message {
+  padding-top: 2px;
+  font-weight: 500;
+}
+
+.summary-container__redeem-code__title {
+  padding: 0 0 5px 0;
+}
+
+.summary-container__redeem-code__input input {
+  margin-bottom: 10px;
+  width: 190px;
+}
+
+.summary-container__total-price {
+  border-top: 1px solid var(--text-color);
+  padding-top: 10px;
+  margin: 40px 0 20px 0;
+  font-size: 1.2em;
+}
+
+.summary-container__buttons__pay {
+  color: var(--text-color-light);
+  width: 200px;
+}
+
+.summary-container__delivery-costs__price {
+  text-decoration: line-through;
+  color: var(--line-through-color);
+}
+
+.summary-container__delivery-costs__price.active {
+  text-decoration: none;
+  color: var(--text-color);
+}

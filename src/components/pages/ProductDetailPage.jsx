@@ -1,31 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useParams } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
-import '../../styles/ProductDetailPage.css';
+import { useState, useRef } from 'react';
+import CheckIcon from '@mui/icons-material/Check';
+
+import '../../styles/pages/ProductDetailPage.css';
 
 function ProductDetail() {
   const { id } = useParams();
-  const {
-    items,
-    itemQuantityCounter,
-    setItemQuantityCounter,
-    setCartItems,
-    isLoading,
-    error,
-  } = useData();
+  const { items, setCartItems, isLoading, error } = useData();
+
+  // Control the quantity input value
+  const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
+
+  // Select the confirm-icon so it can be manipulated (visibility) when needed
+  const confirmIcon = useRef(null);
+
+  // Get all data of the item that was selected in the shop
+  const activeItem = items.find((item) => item.id === parseInt(id));
 
   // Handle situations where the data is not available (yet)
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
-
-  // Get all data of the item that was selected in the shop
-  const activeItem = items.find((item) => item.id === parseInt(id));
 
   // Synchronize value of the quantity input field with the latest value
   function handleOnChange(e) {
     setItemQuantityCounter(parseInt(e.target.value));
   }
 
-  // Add or subtract one to/from the quantity count value
+  // Add or subtract one to/from the quantity input value
   const handleAdjustQuantity = (action) => {
     setItemQuantityCounter((prevValue) => {
       if (action === 'add') {
@@ -37,10 +40,10 @@ function ProductDetail() {
     });
   };
 
-  // Add or update current item in list with cart items
+  // Add or update current item in the list with cart items
   function HandleSubmit() {
     setCartItems((prevCart) => {
-      // Iterate through cart items and select current item
+      // Iterate through the cart items and select the current item
       const foundItem = prevCart.find((item) => item.id === activeItem.id);
 
       // Item does exist in the cart list so the corresponding quantity counter has to be updated only
@@ -59,19 +62,32 @@ function ProductDetail() {
 
     // Reset the value in the quantity input field to one again
     setItemQuantityCounter(1);
+
+    // Activate confirm message after click on button
+    confirmIcon.current.className =
+      'details-content-container__add-button--confirmed active';
+
+    // De-activate confirm message
+    function showConfirmation() {
+      confirmIcon.current.className =
+        'details-content-container__add-button--confirmed';
+    }
+
+    // Remove confirm message after one second
+    setTimeout(showConfirmation, 1000);
   }
 
   return (
     <main aria-label="Product details">
       <h2>Product information</h2>
-      <div className="details-container">
+      <div className="details-content-container">
         {/* Product image */}
-        <div className="product-image">
+        <div className="details-content-container__product-image">
           <img src={activeItem.image} alt={activeItem.title} />
         </div>
 
         {/* Product title, category label, full description, price and quantity input*/}
-        <div className="product-text">
+        <div className="details-content-container__product-text">
           <div>
             <h3>{activeItem.title}</h3>
           </div>
@@ -83,18 +99,18 @@ function ProductDetail() {
           <div>
             <p>{activeItem.description}</p>
           </div>
-          <div className="product-price">
-            {'\u20AC'}
+          <div className="details-content-container__product-price">
+            {'\u20AC'}&nbsp;
             <h4>{activeItem.price.toFixed(2)}</h4>
           </div>
 
           {/* Subtract from quantity input */}
-          <div>
+          <div className="details-content-container__quantity-holder">
             <button
-              type="button"
-              className="adjust-quantity-button"
+              className="details-content-container__adjust-quantity-button"
               aria-label="Subtract item"
               onClick={() => handleAdjustQuantity('subtract')}
+              type="button"
             >
               -
             </button>
@@ -109,27 +125,34 @@ function ProductDetail() {
 
             {/* Add to quantity input */}
             <button
-              type="button"
-              className="adjust-quantity-button"
+              className="details-content-container__adjust-quantity-button"
               aria-label="Add item"
               onClick={() => handleAdjustQuantity('add')}
+              type="button"
             >
               +
             </button>
 
             {/* Add to cart button */}
             <button
-              className="add-button"
+              className="details-content-container__add-button"
               aria-label="Add to cart"
               onClick={HandleSubmit}
             >
               Add to cart
             </button>
+            <div
+              ref={confirmIcon}
+              className="details-content-container__add-button--confirmed"
+            >
+              <CheckIcon />
+            </div>
+          </div>
+          <div className="details-content-container__keep-shopping-button">
+            <Link to="/shop">Keep shopping</Link>
           </div>
         </div>
       </div>
-
-      <Link to="/shop">Back to shop</Link>
     </main>
   );
 }

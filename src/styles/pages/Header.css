@@ -1,0 +1,9 @@
+header {
+  display: flex;
+  padding: 15px 0 10px 0;
+}
+
+header img {
+  height: 55px;
+  width: auto;
+}

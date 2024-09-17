@@ -1,0 +1,121 @@
+/* Custom properties */
+:root {
+  --secondary-color: #a200a5;
+}
+
+.cart-item-card {
+  display: flex;
+  flex-direction: row;
+  color: var(--text-color);
+  border-top: 1px solid var(--text-color);
+}
+
+.cart-item-card__details,
+.cart-item-card__quantity,
+.cart-item-card__price,
+.cart-item-card__total {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-card__details__title,
+.cart-item-card__quantity__title,
+.cart-item-card__price__title,
+.cart-item-card__total__title {
+  display: flex;
+  align-items: center;
+  padding: 10px 50px 10px 0;
+}
+
+.cart-item-card__details__info {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+
+.cart-item-card__details__info__text-values {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0 20px 0;
+}
+
+.cart-item-card__details__info__text-values__title {
+  font-size: 0.9em;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cart-item-card__details__info__text-values__cat {
+  font-style: italic;
+}
+
+.cart-item-card__details__info__text-values__del {
+  color: var(--secondary-color);
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.cart-item-card__details__info__image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 160px;
+  padding: 20px 20px 0 20px;
+}
+
+.cart-item-card__details__info,
+.cart-item-card__details__info__image,
+.cart-item-card__details__info__text-values,
+.cart-item-card__quantity__value,
+.cart-item-card__price__value,
+.cart-item-card__total__value {
+  height: 100%;
+}
+
+.cart-item-card__quantity__value,
+.cart-item-card__price__value,
+.cart-item-card__total__value {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.cart-item-card__price__value,
+.cart-item-card__total__value {
+  font-size: 1.2em;
+}
+
+.cart-item-card__quantity__value {
+  margin-right: 20px;
+}
+
+@media (max-width: 1000px) {
+  .cart-item-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-item-card__quantity__value,
+  .cart-item-card__price__value,
+  .cart-item-card__total__value {
+    padding: 0;
+  }
+
+  .cart-item-card__quantity__title,
+  .cart-item-card__price__title,
+  .cart-item-card__total__title {
+    padding: 30px 50px 0 0;
+  }
+
+  .cart-item-card__details__info {
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+  }
+
+  .cart-item-card__total__value {
+    margin: 0 0 10px 0;
+  }
+}

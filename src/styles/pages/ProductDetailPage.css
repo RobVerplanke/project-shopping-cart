@@ -1,0 +1,92 @@
+/* Custom properties */
+:root {
+  --input-background-color: #ffffff;
+  --secondary-color: #a200a5;
+  --confirm-message-color: rgb(0, 202, 0);
+}
+
+input {
+  margin: 0 5px 0 5px;
+  padding: 5px;
+  font-size: 1em;
+  width: 32px;
+  height: 28px;
+  border-radius: 5px;
+  border: 1ps solid black;
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+}
+
+.details-content-container {
+  display: flex;
+  padding: 20px 20px 20px 0;
+}
+
+.details-content-container__product-image > img {
+  height: auto;
+  width: 300px;
+  margin-right: 20px;
+}
+
+.details-content-container__product-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 10px;
+}
+
+.details-content-container__product-price {
+  display: flex;
+  align-items: center;
+  font-size: 1.8em;
+  display: flex;
+}
+
+.details-content-container__quantity-holder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.details-content-container__adjust-quantity-button {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+  font-weight: 700;
+  width: 30px;
+  height: 28px;
+}
+
+.details-content-container__add-button {
+  height: 28px;
+  width: 100px;
+  font-size: 1em;
+  margin-left: 20px;
+}
+
+.details-content-container__keep-shopping-button {
+  margin-top: 20px;
+}
+
+.details-content-container__add-button--confirmed {
+  color: white;
+
+  font-size: 1.6em;
+  font-weight: 700;
+  padding-left: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.details-content-container__add-button--confirmed.active {
+  color: var(--confirm-message-color);
+}
+
+@media (max-width: 1000px) {
+  .details-content-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
