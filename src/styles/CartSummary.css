@@ -43,6 +43,7 @@
 }
 
 .summary-container__redeem-code__input input {
+  font-size: 0.8em;
   margin-bottom: 10px;
   width: 190px;
 }

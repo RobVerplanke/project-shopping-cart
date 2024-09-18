@@ -5,7 +5,7 @@ export function getCartTotalQuantity(cartItems) {
   return cartItems.value.reduce((acc, item) => (acc += item.quantity), 0);
 }
 
-// Calculate the total costs for the amount of the same items, round the total
+// Calculate the total costs for the quantity of the same items, round the total
 export function multiplyPriceQuantity(price, quantity) {
   const total = price * quantity;
   return total.toFixed(2);

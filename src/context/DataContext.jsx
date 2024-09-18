@@ -13,13 +13,11 @@ export function DataProvider({ children }) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Calculate total amount of items in cart
+  // Calculate total quantity of items in cart
   const cartQuantityCounter = cartItems.reduce(
     (total, item) => (total += item.quantity),
     0
   );
-
-  useEffect(() => {}, [cartItems]);
 
   // Get a limited amount of fake products from fakestoreapi.com
   useEffect(() => {

@@ -12,7 +12,7 @@ function CartItemCard({ item }) {
   const [itemQuantityCounter, setItemQuantityCounter] = useState(quantity);
   const { setCartItems } = useData();
 
-  // Replace the itemslist with a new list, without the corresponding item
+  // Replace the itemslist with a new list that has the corresponding item filtered out
   const handleRemove = (itemIdToRemove) => {
     setCartItems((prevVal) =>
       prevVal.filter((item) => item.id !== itemIdToRemove)

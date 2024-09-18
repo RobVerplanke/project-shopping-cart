@@ -20,6 +20,8 @@ function Navbar() {
           </Link>
         </li>
       </ul>
+
+      {/* Cart button is on the other side of the navigation bar */}
       <ul className="navbar-cart">
         <li>
           <Link to="cart" aria-label="Go to Shopping Cart">

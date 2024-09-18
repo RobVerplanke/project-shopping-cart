@@ -13,25 +13,24 @@ function QuantityController({
   const { id } = item;
   const { setCartItems } = useData();
 
-  // When input amount changes, update the quantity value in the corresponding cart item
+  // When input quantity changes, update the quantity value in the corresponding cart item
   // so the total costs can directly be recalculated
   useEffect(() => {
     setCartItems((prevCart) => {
       return prevCart.map((cartItem) =>
         cartItem.id === id
-          ? // ? { ...cartItem, quantity: itemQuantityCounter }
-            { ...cartItem, quantity: itemQuantityCounter }
+          ? { ...cartItem, quantity: itemQuantityCounter }
           : cartItem
       );
     });
   }, [itemQuantityCounter]);
 
-  // Controlled component - Update the input value when user changes it
+  // Controlled component - update the input value when user changes it
   const handleOnChange = (e) => {
     setItemQuantityCounter(parseInt(e.target.value, 10) || 1);
   };
 
-  // Update the amount with the given action (add/subtract)
+  // Update the quantity with the given action (add/subtract)
   const handleQuantityChange = (action) => {
     setItemQuantityCounter((prevValue) => {
       const newItemQuantity =

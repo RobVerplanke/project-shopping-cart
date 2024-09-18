@@ -15,7 +15,7 @@ function ProductDetail() {
   // Control the quantity input value
   const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
 
-  // Select the confirm-icon so it can be manipulated (visibility) when needed
+  // Select the confirm icon so it can be manipulated (visibility) when needed
   const confirmIcon = useRef(null);
 
   // Get all the data of the item that was selected in the shop
@@ -91,6 +91,8 @@ function ProductDetail() {
             >
               Add to cart
             </button>
+
+            {/* Confirm icon */}
             <div
               ref={confirmIcon}
               className="details-content-container__add-button--confirmed"

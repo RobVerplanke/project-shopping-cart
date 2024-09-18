@@ -56,7 +56,7 @@ describe('CartPage component', () => {
     await waitFor(() => {
       expect(screen.getByText(/Product 1/i)).toBeInTheDocument();
       expect(screen.getByText(/Description 1/i)).toBeInTheDocument();
-      expect(screen.getByText(/Amount: 2/i)).toBeInTheDocument();
+      expect(screen.getByText(/quantity: 2/i)).toBeInTheDocument();
     });
   });
 });

@@ -10,13 +10,13 @@ import {
 import '../styles/CartSummary.css';
 
 function CartSumary(cartItems) {
-  // Get the total amount of items that are in the cart
+  // Get the total quantity of items that are in the cart
   const cartTotalQuantity = getCartTotalQuantity(cartItems);
 
   // Calculate the total costs of all items in the cart
   const allItemsCosts = getAllItemsCosts(cartItems);
 
-  // Inform user that this is a mock webshop without a backend when clicked on the checkout button
+  // Inform user that this is a mock webshop without a backend, when clicked on the checkout button
   const handleSubmit = () => {
     alert('Sorry, this is a front-end only project');
   };
@@ -27,7 +27,7 @@ function CartSumary(cartItems) {
         <p>ORDER SUMMARY</p>
       </div>
       <div className="summary-container__items-total-price">
-        {/* Display total amount of items in cart */}
+        {/* Display total quantity of items in cart */}
         <div className="summary-container__items-price__title">
           <p>ITEMS ({cartTotalQuantity})</p>
         </div>
@@ -61,13 +61,13 @@ function CartSumary(cartItems) {
         </p>
       </div>
 
-      {/* Redeem a fictional discount code */}
+      {/* Redeem a fictional discount code (does nothing) */}
       <div className="summary-container__redeem-code">
         <div className="summary-container__redeem-code__title">
           <p>REDEEM CODE</p>
         </div>
         <div className="summary-container__redeem-code__input">
-          <input type="text" />
+          <input type="text" placeholder="Get your discount..." />
         </div>
       </div>
 
