@@ -2,17 +2,13 @@
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext.jsx';
 import QuantityController from './QuantityController.jsx';
+import { multiplyPriceQuantity } from '../utils/helperFunctions.js';
 import '../styles/CartItemCard.css';
 
 function CartItemCard(item) {
   const { id, image, title, category, quantity, price } = item.value;
-  const { cartItems, setCartItems } = useData();
+  const { setCartItems } = useData();
 
-  // Calculate the total costs for the amount of the same items, round the total
-  function multiplyPriceQuantity(price, quantity) {
-    const total = price * quantity;
-    return total.toFixed(2);
-  }
   // Replace the itemslist with a new list, without the corresponding item
   const handleRemove = (itemIdToRemove) => {
     setCartItems((prevVal) =>
@@ -32,8 +28,8 @@ function CartItemCard(item) {
             <img src={image} alt={`picture of ${title}`} />
           </div>
 
-          {/* title */}
           <div className="cart-item-card__details__info__text-values">
+            {/* title */}
             <p className="cart-item-card__details__info__text-values__title">
               <Link to={`../shop/product/${id}`}>{title}</Link>
             </p>

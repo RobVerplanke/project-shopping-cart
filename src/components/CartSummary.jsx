@@ -1,33 +1,25 @@
 // import { Link } from 'react-router-dom';
 // import { useEffect, useRef } from 'react';
-import { DELIVERY_COSTS } from '../lib/constants.js';
-import { DELIVERY_DISCOUNT_LIMIT } from '../lib/constants.js';
-import getQuantityCount from '../utils/helperFunctions.js';
+import { DELIVERY_DISCOUNT_LIMIT, DELIVERY_COSTS } from '../lib/constants.js';
+import {
+  getQuantityCount,
+  getTotalCartCosts,
+  getTotalItemCosts,
+} from '../utils/helperFunctions.js';
 
 import '../styles/CartSummary.css';
 
 function CartSumary(cartItems) {
-  // Calculate the total costs of all items
-  const totalItemCosts = cartItems.value.reduce((acc, item) => {
-    return (acc = acc + item.quantity * item.price);
-  }, 0);
-
   // Get the total amount of items that are in the cart
   const cartQuantityCounter = getQuantityCount(cartItems);
+
+  // Calculate the total costs of all items in the cart
+  const totalItemCosts = getTotalItemCosts(cartItems);
 
   // Inform user that this is a mock webshop without a backend when clicked on the checkout button
   const handleSubmit = () => {
     alert('Sorry, this is a front-end only project');
   };
-
-  // Calculate total costs, including additional costs like delivery costs
-  function getTotalCosts() {
-    if (totalItemCosts >= 50) {
-      return totalItemCosts.toFixed(2);
-    } else {
-      return (totalItemCosts + DELIVERY_COSTS).toFixed(2);
-    }
-  }
 
   return (
     <div className="summary-container">
@@ -86,7 +78,7 @@ function CartSumary(cartItems) {
         </div>
         <div>
           <p>
-            {'\u20AC'} {getTotalCosts()}
+            {'\u20AC'} {getTotalCartCosts(totalItemCosts)}
           </p>
         </div>
       </div>
