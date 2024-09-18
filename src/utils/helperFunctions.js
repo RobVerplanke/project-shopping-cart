@@ -27,3 +27,21 @@ export function getAllItemsCosts(cartItems) {
   }, 0);
   return total;
 }
+
+// Show confirm icon after click on button
+export function setConfirmMessageVisible(confirmIcon) {
+  confirmIcon.current.className =
+    'details-content-container__add-button--confirmed active';
+
+  // De-activate confirm message
+  function showConfirmation() {
+    // Check if the element still exists
+    if (confirmIcon.current) {
+      confirmIcon.current.className =
+        'details-content-container__add-button--confirmed';
+    }
+  }
+
+  // Remove confirm message after one second
+  setTimeout(showConfirmation, 1000);
+}

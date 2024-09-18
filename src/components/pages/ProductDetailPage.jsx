@@ -4,6 +4,7 @@ import { useData } from '../../context/DataContext';
 import { useState, useRef } from 'react';
 import QuantityController from '../QuantityController.jsx';
 import CheckIcon from '@mui/icons-material/Check';
+import { setConfirmMessageVisible } from '../../utils/helperFunctions.js';
 
 import '../../styles/pages/ProductDetailPage.css';
 
@@ -17,7 +18,7 @@ function ProductDetail() {
   // Select the confirm-icon so it can be manipulated (visibility) when needed
   const confirmIcon = useRef(null);
 
-  // Get all data of the item that was selected in the shop
+  // Get all the data of the item that was selected in the shop
   const activeItem = items.find((item) => item.id === parseInt(id));
 
   // Handle situations where the data is not available (yet)
@@ -44,21 +45,8 @@ function ProductDetail() {
       }
     });
 
-    // Activate confirm message after click on button
-    confirmIcon.current.className =
-      'details-content-container__add-button--confirmed active';
-
-    // De-activate confirm message
-    function showConfirmation() {
-      // Check if the element still exists
-      if (confirmIcon.current) {
-        confirmIcon.current.className =
-          'details-content-container__add-button--confirmed';
-      }
-    }
-
-    // Remove confirm message after one second
-    setTimeout(showConfirmation, 1000);
+    // Show confirm icon after click on button
+    setConfirmMessageVisible(confirmIcon);
   }
 
   return (
