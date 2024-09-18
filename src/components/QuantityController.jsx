@@ -11,30 +11,30 @@ function QuantityController({ item }) {
 
   const [itemQuantityCounter, setItemQuantityCounter] = useState(1);
 
-  // Update value of input field
+  // Update the amount with the latest value (displayed in the input field)
   useEffect(() => {
     setItemQuantityCounter(quantity);
-  }, [quantity]);
+  }, []);
 
-  // Synchronize value of the quantity input field with the latest value
+  // When input amount changes, update the quantity value in the corresponding cart item
+  // so the total costs can directly be recalculated
+  useEffect(() => {
+    setCartItems((prevCart) => {
+      return prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: itemQuantityCounter } : item
+      );
+    });
+  }, [itemQuantityCounter]);
+
+  // Controlled component - Update the input value when user changes it
   const handleOnChange = (e) => {
-    setItemQuantityCounter(e.target.value);
+    setItemQuantityCounter(parseInt(e.target.value));
   };
 
-  // Update the value of the input field with the choosen action
+  // Update the amount with the given action (add/subtract)
   const handleAdjustQuantity = (action) => {
     setItemQuantityCounter((prevValue) => {
-      const newValue =
-        action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
-
-      // Update the cart directly with the new value
-      setCartItems((prevCart) => {
-        return prevCart.map((item) =>
-          item.id === id ? { ...item, quantity: newValue } : item
-        );
-      });
-
-      return newValue;
+      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
     });
   };
 
