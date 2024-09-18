@@ -5,7 +5,7 @@ import CartSumary from '../CartSummary.jsx';
 import '../../styles/pages/CartPage.css';
 
 function Cart() {
-  const { cartItems, setCartItems } = useData();
+  const { cartItems } = useData();
 
   // Show message if shopping cart is empty instead of rendering an empty table
   if (!cartItems.length) {
@@ -24,13 +24,9 @@ function Cart() {
         aria-label="Shopping cart"
       >
         <div className="cart-content-container__content-holder__cards">
-          {cartItems.map(
-            (
-              item // Generate a card for each cart item
-            ) => (
-              <CartItemCard key={item.id} value={item} />
-            )
-          )}
+          {cartItems.map((item) => {
+            return <CartItemCard key={item.id} item={item} />;
+          })}
         </div>
         {/* Generate overview of total costs */}
         <div className="cart-content-container__content-holder__summary">

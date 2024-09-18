@@ -2,6 +2,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
 import { useState, useRef } from 'react';
+import QuantityController from '../QuantityController.jsx';
 import CheckIcon from '@mui/icons-material/Check';
 
 import '../../styles/pages/ProductDetailPage.css';
@@ -23,18 +24,6 @@ function ProductDetail() {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
 
-  // Synchronize value of the quantity input field with the latest value
-  function handleOnChange(e) {
-    setItemQuantityCounter(parseInt(e.target.value));
-  }
-
-  // Add or subtract one to/from the quantity input value
-  const handleAdjustQuantity = (action) => {
-    setItemQuantityCounter((prevValue) => {
-      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
-    });
-  };
-
   // Add or update current item in the list with cart items
   function HandleSubmit() {
     setCartItems((prevCart) => {
@@ -55,17 +44,17 @@ function ProductDetail() {
       }
     });
 
-    // Reset the value in the quantity input field to one again
-    setItemQuantityCounter(1);
-
     // Activate confirm message after click on button
     confirmIcon.current.className =
       'details-content-container__add-button--confirmed active';
 
     // De-activate confirm message
     function showConfirmation() {
-      confirmIcon.current.className =
-        'details-content-container__add-button--confirmed';
+      // Check if the element still exists
+      if (confirmIcon.current) {
+        confirmIcon.current.className =
+          'details-content-container__add-button--confirmed';
+      }
     }
 
     // Remove confirm message after one second
@@ -99,34 +88,12 @@ function ProductDetail() {
             <h4>{activeItem.price.toFixed(2)}</h4>
           </div>
 
-          {/* Subtract from quantity input */}
           <div className="details-content-container__quantity-holder">
-            <button
-              className="details-content-container__adjust-quantity-button"
-              aria-label="Subtract item"
-              onClick={() => handleAdjustQuantity('subtract')}
-              type="button"
-            >
-              -
-            </button>
-
-            {/* Input quantity */}
-            <input
-              onChange={handleOnChange}
-              type="text"
-              name="item-quantity"
-              value={itemQuantityCounter}
+            <QuantityController
+              item={activeItem}
+              itemQuantityCounter={itemQuantityCounter}
+              setItemQuantityCounter={setItemQuantityCounter}
             />
-
-            {/* Add to quantity input */}
-            <button
-              className="details-content-container__adjust-quantity-button"
-              aria-label="Add item"
-              onClick={() => handleAdjustQuantity('add')}
-              type="button"
-            >
-              +
-            </button>
 
             {/* Add to cart button */}
             <button

@@ -1,7 +1,7 @@
 import { DELIVERY_COSTS } from '../lib/constants.js';
 
 // Calculate the total costs for all items together
-export function getQuantityCount(cartItems) {
+export function getCartTotalQuantity(cartItems) {
   return cartItems.value.reduce((acc, item) => (acc += item.quantity), 0);
 }
 
@@ -12,7 +12,7 @@ export function multiplyPriceQuantity(price, quantity) {
 }
 
 // Calculate total costs, including additional costs like delivery costs
-export function getTotalCartCosts(totalItemCosts) {
+export function getCartTotalCosts(totalItemCosts) {
   if (totalItemCosts >= 50) {
     return totalItemCosts.toFixed(2);
   } else {
@@ -21,7 +21,7 @@ export function getTotalCartCosts(totalItemCosts) {
 }
 
 // Calculate the total costs of all items in the cart
-export function getTotalItemCosts(cartItems) {
+export function getAllItemsCosts(cartItems) {
   const total = cartItems.value.reduce((acc, item) => {
     return (acc = acc + item.quantity * item.price);
   }, 0);

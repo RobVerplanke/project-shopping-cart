@@ -2,19 +2,19 @@
 // import { useEffect, useRef } from 'react';
 import { DELIVERY_DISCOUNT_LIMIT, DELIVERY_COSTS } from '../lib/constants.js';
 import {
-  getQuantityCount,
-  getTotalCartCosts,
-  getTotalItemCosts,
+  getCartTotalQuantity,
+  getCartTotalCosts,
+  getAllItemsCosts,
 } from '../utils/helperFunctions.js';
 
 import '../styles/CartSummary.css';
 
 function CartSumary(cartItems) {
   // Get the total amount of items that are in the cart
-  const cartQuantityCounter = getQuantityCount(cartItems);
+  const cartTotalQuantity = getCartTotalQuantity(cartItems);
 
   // Calculate the total costs of all items in the cart
-  const totalItemCosts = getTotalItemCosts(cartItems);
+  const allItemsCosts = getAllItemsCosts(cartItems);
 
   // Inform user that this is a mock webshop without a backend when clicked on the checkout button
   const handleSubmit = () => {
@@ -29,11 +29,11 @@ function CartSumary(cartItems) {
       <div className="summary-container__items-total-price">
         {/* Display total amount of items in cart */}
         <div className="summary-container__items-price__title">
-          <p>ITEMS ({cartQuantityCounter})</p>
+          <p>ITEMS ({cartTotalQuantity})</p>
         </div>
         <div className="summary-container__items-price__price">
           <p>
-            {'\u20AC'} {totalItemCosts.toFixed(2)}
+            {'\u20AC'} {allItemsCosts.toFixed(2)}
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@ function CartSumary(cartItems) {
         <div>
           <p
             className={
-              totalItemCosts >= DELIVERY_DISCOUNT_LIMIT
+              allItemsCosts >= DELIVERY_DISCOUNT_LIMIT
                 ? 'summary-container__delivery-costs__price'
                 : 'summary-container__delivery-costs__price active'
             }
@@ -78,7 +78,7 @@ function CartSumary(cartItems) {
         </div>
         <div>
           <p>
-            {'\u20AC'} {getTotalCartCosts(totalItemCosts)}
+            {'\u20AC'} {getCartTotalCosts(allItemsCosts)}
           </p>
         </div>
       </div>

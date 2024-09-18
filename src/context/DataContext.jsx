@@ -19,6 +19,8 @@ export function DataProvider({ children }) {
     0
   );
 
+  useEffect(() => {}, [cartItems]);
+
   // Get a limited amount of fake products from fakestoreapi.com
   useEffect(() => {
     const fetchData = async () => {

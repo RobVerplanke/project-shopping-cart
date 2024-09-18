@@ -1,12 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext.jsx';
 import QuantityController from './QuantityController.jsx';
 import { multiplyPriceQuantity } from '../utils/helperFunctions.js';
 import '../styles/CartItemCard.css';
 
-function CartItemCard(item) {
-  const { id, image, title, category, quantity, price } = item.value;
+function CartItemCard({ item }) {
+  const { id, image, title, category, quantity, price } = item;
+  const [itemQuantityCounter, setItemQuantityCounter] = useState(quantity);
   const { setCartItems } = useData();
 
   // Replace the itemslist with a new list, without the corresponding item
@@ -61,7 +64,11 @@ function CartItemCard(item) {
           <p>QUANTITY</p>
         </div>
         <div className="cart-item-card__quantity__value">
-          <QuantityController item={item} />
+          <QuantityController
+            item={item}
+            itemQuantityCounter={itemQuantityCounter}
+            setItemQuantityCounter={setItemQuantityCounter}
+          />
         </div>
       </div>
 
@@ -84,7 +91,7 @@ function CartItemCard(item) {
         </div>
         <div className="cart-item-card__total__value">
           <p>
-            {'\u20AC'} {multiplyPriceQuantity(price, quantity)}
+            {'\u20AC'} {multiplyPriceQuantity(price, itemQuantityCounter)}
           </p>
         </div>
       </div>
