@@ -31,12 +31,7 @@ function ProductDetail() {
   // Add or subtract one to/from the quantity input value
   const handleAdjustQuantity = (action) => {
     setItemQuantityCounter((prevValue) => {
-      if (action === 'add') {
-        return prevValue + 1;
-      } else if (action === 'subtract') {
-        return Math.max(prevValue - 1, 1);
-      }
-      return prevValue;
+      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
     });
   };
 
