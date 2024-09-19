@@ -55,11 +55,14 @@ function ProductDetail() {
       <div className="details-content-container">
         {/* Product image */}
         <div className="details-content-container__product-image">
-          <img src={activeItem.image} alt={activeItem.title} />
+          <img src={activeItem.image} alt={`Image of ${activeItem.title}`} />
         </div>
 
         {/* Product title, category label, full description, price and quantity input*/}
-        <div className="details-content-container__product-text">
+        <div
+          className="details-content-container__product-text"
+          aria-label="Product description"
+        >
           <div>
             <h3>{activeItem.title}</h3>
           </div>
@@ -92,7 +95,7 @@ function ProductDetail() {
               Add to cart
             </button>
 
-            {/* Confirm icon */}
+            {/* Confirm icon get activated after click */}
             <div
               ref={confirmIcon}
               className="details-content-container__add-button--confirmed"
@@ -100,7 +103,12 @@ function ProductDetail() {
               <CheckIcon />
             </div>
           </div>
-          <div className="details-content-container__keep-shopping-button">
+
+          {/* Link to back to shop page */}
+          <div
+            className="details-content-container__keep-shopping-button"
+            aria-label="Go to shopping page"
+          >
             <Link to="/shop">Keep shopping</Link>
           </div>
         </div>
