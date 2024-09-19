@@ -4,7 +4,7 @@ import Facebook from '@mui/icons-material/Facebook';
 import X from '@mui/icons-material/X';
 import GitHub from '@mui/icons-material/GitHub';
 
-import '../styles/pages/Footer.css';
+import '../styles/Footer.css';
 
 function Footer() {
   return (
