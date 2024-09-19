@@ -14,7 +14,7 @@ function TopNewItems() {
       <div className="top-items-title">
         <h2>Top new items</h2>
       </div>
-      <div className="top-items">
+      <div className="top-items" aria-label="Top new items">
         {selectedItems.map((item) => (
           <ShopItemCard key={item.id} item={item} />
         ))}

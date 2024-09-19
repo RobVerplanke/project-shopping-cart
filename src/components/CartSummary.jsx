@@ -31,7 +31,10 @@ function CartSumary(cartItems) {
         <div className="summary-container__items-price__title">
           <p>ITEMS ({cartTotalQuantity})</p>
         </div>
-        <div className="summary-container__items-price__price">
+        <div
+          className="summary-container__items-price__price"
+          aria-label="Cost of all items"
+        >
           <p>
             {'\u20AC'} {allItemsCosts.toFixed(2)}
           </p>
@@ -43,7 +46,7 @@ function CartSumary(cartItems) {
         <div className="summary-container__delivery-costs__title">
           <p>DELIVERY COSTS</p>
         </div>
-        <div>
+        <div aria-label="Delivery costs">
           <p
             className={
               allItemsCosts >= DELIVERY_DISCOUNT_LIMIT
@@ -57,7 +60,7 @@ function CartSumary(cartItems) {
       </div>
       <div className="summary-container__delivery-costs__delivery-message">
         <p>
-          Free delivery above {'\u20AC'} {DELIVERY_DISCOUNT_LIMIT.toFixed(2)}!
+          Free delivery above {'\u20AC'} {DELIVERY_DISCOUNT_LIMIT.toFixed(2)}.
         </p>
       </div>
 
@@ -66,7 +69,10 @@ function CartSumary(cartItems) {
         <div className="summary-container__redeem-code__title">
           <p>REDEEM CODE</p>
         </div>
-        <div className="summary-container__redeem-code__input">
+        <div
+          className="summary-container__redeem-code__input"
+          aria-label="Redeem discount code"
+        >
           <input type="text" placeholder="Get your discount..." />
         </div>
       </div>
@@ -76,7 +82,7 @@ function CartSumary(cartItems) {
         <div className="summary-container__total-price__title">
           <p>TOTAL COST:</p>
         </div>
-        <div>
+        <div aria-label="Total cost of the order">
           <p>
             {'\u20AC'} {getCartTotalCosts(allItemsCosts)}
           </p>

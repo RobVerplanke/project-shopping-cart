@@ -14,7 +14,7 @@ function TrendingItems() {
       <div className="trending-items-title">
         <h2>Trending</h2>
       </div>
-      <div className="trending-items">
+      <div className="trending-items" aria-label="Top new items">
         {selectedItems.map((item) => (
           <ShopItemCard key={item.id} item={item} />
         ))}
