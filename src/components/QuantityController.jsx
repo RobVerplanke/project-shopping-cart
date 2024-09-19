@@ -27,43 +27,43 @@ function QuantityController({
 
   // Controlled component - update the input value when user changes it
   const handleOnChange = (e) => {
-    setItemQuantityCounter(parseInt(e.target.value, 10) || 1);
+    setItemQuantityCounter(parseInt(e.target.value, 10));
   };
 
-  // Update the quantity with the given action (add/subtract)
+  // Update the quantity with the given action (add/subtract one)
   const handleQuantityChange = (action) => {
     setItemQuantityCounter((prevValue) => {
-      const newItemQuantity =
-        action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
-      return newItemQuantity;
+      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
     });
   };
 
   return (
     <div className="counter-container">
+      {/* Button to subtract one item from the quantity value */}
       <button
         className="counter-container__button"
-        type="button"
         aria-label="Subtract item"
+        type="button"
         onClick={() => handleQuantityChange('subtract')}
       >
         -
       </button>
 
-      {/* Input quantity */}
+      {/* Quantity input field */}
       <input
         className="counter-container__counter-value"
+        aria-label="Item quantity"
         onChange={handleOnChange}
         type="text"
         name="item-quantity"
         value={itemQuantityCounter}
       />
 
-      {/* Add to quantity input */}
+      {/* Button to add one item to the quantity value */}
       <button
         className="counter-container__button"
-        type="button"
         aria-label="Add item"
+        type="button"
         onClick={() => handleQuantityChange('add')}
       >
         +
