@@ -17,10 +17,12 @@ function Home() {
         </div>
 
         {/* Call-to-action button */}
-        <Link to="/shop" tabIndex="-1">
-          <button className="home-content-container__shop-now-button">
-            SHOP NOW
-          </button>
+        <Link
+          id="home-content-container__shop-now-button"
+          to="/shop"
+          tabIndex="-1"
+        >
+          SHOP NOW
         </Link>
 
         {/* Overview of most trending items of the moment */}

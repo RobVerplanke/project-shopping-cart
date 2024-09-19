@@ -1,3 +1,7 @@
+:root {
+  --link-color-light: #ffffff;
+}
+
 .home-content-container {
   display: flex;
   flex-direction: column;
@@ -21,6 +25,17 @@
   margin-top: 80px;
 }
 
-.home-content-container__shop-now-button {
+#home-content-container__shop-now-button {
+  width: 160px;
+  height: 50px;
+  padding: 9px 0 0 18px;
   margin-top: 70px;
+  font-size: 1.4em;
+  font-weight: 500;
+  color: var(--link-color-light);
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
 }
