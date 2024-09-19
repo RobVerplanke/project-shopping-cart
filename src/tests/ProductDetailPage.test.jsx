@@ -9,12 +9,13 @@ vi.mock('react-router-dom', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,
-    useParams: () => ({ id: '1' }), // Only mock useParams
+    useParams: () => ({ id: '2' }), // Only mock useParams with id: 2
   };
 });
 
 describe('ProductDetail Component', () => {
   it('renders the correct product information based on the id', () => {
+    // Mock 2 items
     const mockItems = [
       {
         id: 1,
@@ -34,6 +35,7 @@ describe('ProductDetail Component', () => {
       },
     ];
 
+    // Simulate the mocked items are in the cart page
     vi.spyOn(DataContext, 'useData').mockReturnValue({
       items: mockItems,
       itemQuantityCounter: 1,
@@ -49,10 +51,11 @@ describe('ProductDetail Component', () => {
       </MemoryRouter>
     );
 
+    // (useParams is mocked with id: 2)
     // Check if the correct product information is displayed
-    expect(screen.getByText('Product 1')).toBeInTheDocument();
-    expect(screen.getByText('Category 1')).toBeInTheDocument();
-    expect(screen.getByText('Description 1')).toBeInTheDocument();
-    expect(screen.getByText('10.00')).toBeInTheDocument();
+    expect(screen.getByText('Product 2')).toBeInTheDocument();
+    expect(screen.getByText('Category 2')).toBeInTheDocument();
+    expect(screen.getByText('Description 2')).toBeInTheDocument();
+    expect(screen.getByText('20.00')).toBeInTheDocument();
   });
 });

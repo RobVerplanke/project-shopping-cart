@@ -4,7 +4,6 @@ exports[`Navbar component > renders navigation links correctly 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Main navigation"
-    class="navbar"
   >
     <ul
       class="navbar-items"
@@ -14,7 +13,7 @@ exports[`Navbar component > renders navigation links correctly 1`] = `
           aria-label="Go to Home Page"
           href="/home"
         >
-          Home
+          HOME
         </a>
       </li>
       <li>
@@ -22,7 +21,7 @@ exports[`Navbar component > renders navigation links correctly 1`] = `
           aria-label="Go to Shop Page"
           href="/shop"
         >
-          Shop
+          SHOP
         </a>
       </li>
     </ul>
@@ -39,7 +38,7 @@ exports[`Navbar component > renders navigation links correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
               data-testid="ShoppingCartIcon"
               focusable="false"
               viewBox="0 0 24 24"

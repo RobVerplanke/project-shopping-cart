@@ -20,6 +20,7 @@ function AppWithRoutes() {
 }
 
 describe('Navbar component', () => {
+  // Mock data before each test
   beforeEach(() => {
     vi.spyOn(DataContext, 'useData').mockReturnValue({
       cartQuantityCounter: 0,
@@ -56,7 +57,7 @@ describe('Navbar component', () => {
       </MemoryRouter>
     );
 
-    // Home page is rendered
+    // Home page title is rendered
     expect(
       screen.getByText(/Your new favorite place to shop!/i)
     ).toBeInTheDocument();
@@ -89,6 +90,7 @@ describe('Navbar component', () => {
     vi.spyOn(DataContext, 'useData').mockReturnValue({
       items: mockedItems,
       cartItems: mockedItems,
+      setCartItems: vi.fn(),
     });
 
     render(
@@ -106,7 +108,7 @@ describe('Navbar component', () => {
     );
   });
 
-  // Shows error page when url path is invalid
+  // Copy routing paths from routes.jsx
   it('Loads error page on invalid route', async () => {
     render(
       <MemoryRouter initialEntries={['/invalid-path']}>
@@ -123,6 +125,7 @@ describe('Navbar component', () => {
       </MemoryRouter>
     );
 
+    // Renders error page when url path is invalid
     await waitFor(() => {
       expect(screen.getByText('Error page')).toBeInTheDocument();
     });
