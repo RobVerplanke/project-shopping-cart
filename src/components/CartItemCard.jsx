@@ -20,7 +20,7 @@ function CartItemCard({ item }) {
   };
 
   return (
-    <div className="cart-item-card">
+    <div className="cart-item-card" aria-label="Item in cart">
       <div className="cart-item-card__details">
         <div className="cart-item-card__details__title">
           <p>PRODUCT DETAILS</p>
@@ -33,7 +33,10 @@ function CartItemCard({ item }) {
 
           <div className="cart-item-card__details__info__text-values">
             {/* title */}
-            <p className="cart-item-card__details__info__text-values__title">
+            <p
+              className="cart-item-card__details__info__text-values__title"
+              aria-label="Show item details page"
+            >
               <Link to={`../shop/product/${id}`}>{title}</Link>
             </p>
 
@@ -48,6 +51,8 @@ function CartItemCard({ item }) {
             {/* Remove-from-cart button */}
             <a
               className="cart-item-card__details__info__text-values__del"
+              aria-label="Remove item from cart"
+              tabIndex="0"
               onClick={() => {
                 handleRemove(id);
               }}
@@ -63,7 +68,10 @@ function CartItemCard({ item }) {
         <div className="cart-item-card__quantity__title">
           <p>QUANTITY</p>
         </div>
-        <div className="cart-item-card__quantity__value">
+        <div
+          className="cart-item-card__quantity__value"
+          aria-label="Amount of items"
+        >
           <QuantityController
             item={item}
             itemQuantityCounter={itemQuantityCounter}
@@ -77,7 +85,10 @@ function CartItemCard({ item }) {
         <div className="cart-item-card__price__title">
           <p>PRICE</p>
         </div>
-        <div className="cart-item-card__price__value">
+        <div
+          className="cart-item-card__price__value"
+          aria-label="Price of current item"
+        >
           <p>
             {'\u20AC'} {price.toFixed(2)}
           </p>
@@ -89,7 +100,10 @@ function CartItemCard({ item }) {
         <div className="cart-item-card__total__title">
           <p>TOTAL</p>
         </div>
-        <div className="cart-item-card__total__value">
+        <div
+          className="cart-item-card__total__value"
+          aria-label="Total costs of current item"
+        >
           <p>
             {'\u20AC'} {multiplyPriceQuantity(price, itemQuantityCounter)}
           </p>
