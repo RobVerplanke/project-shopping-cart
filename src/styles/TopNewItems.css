@@ -1,10 +1,11 @@
-:root {
-  --selection-title-color: #a200a5;
-}
-
 .top-items-title {
-  align-self: baseline;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
+  padding: 10px 0 10px 0;
+  border: 1px solid var(--selection-title-color);
+  border-radius: 5px;
+  width: 100%;
 }
 
 .top-items-title h2 {

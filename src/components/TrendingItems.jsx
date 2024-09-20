@@ -13,7 +13,7 @@ function TrendingItems() {
   return (
     <>
       <div className="trending-items-title">
-        <h2>Trending</h2>
+        <h2>Trending items</h2>
       </div>
       <div className="trending-items" aria-label="Top new items">
         {selectedItems.map((item) => (

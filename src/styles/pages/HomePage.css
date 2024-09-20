@@ -37,5 +37,11 @@
   border: 1px solid transparent;
   background-color: var(--secondary-color);
   cursor: pointer;
-  transition: all 0.2s ease-in;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: transform 0.2s ease-in;
+}
+
+#home-content-container__shop-now-button:hover {
+  transform: scale(1.05);
 }
