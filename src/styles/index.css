@@ -46,6 +46,7 @@ p {
 }
 
 a {
+  color: var(--text-color-light);
   font-weight: 500;
   text-decoration: inherit;
 }
