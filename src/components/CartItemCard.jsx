@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useData } from '../context/DataContext.jsx';
-import QuantityController from './QuantityController.jsx';
 import { multiplyPriceQuantity } from '../utils/helperFunctions.js';
 import '../styles/CartItemCard.css';
 
@@ -12,6 +12,32 @@ function CartItemCard({ item }) {
   const [itemQuantityCounter, setItemQuantityCounter] = useState(quantity);
   const { setCartItems } = useData();
 
+  // When input quantity changes, update the quantity value in the corresponding cart item
+  // so the total costs can directly be recalculated
+  useEffect(() => {
+    setCartItems((prevCart) => {
+      return prevCart.map((cartItem) =>
+        cartItem.id === id
+          ? { ...cartItem, quantity: itemQuantityCounter }
+          : cartItem
+      );
+    });
+  }, [itemQuantityCounter]);
+
+  // Controlled component - update the input value when user changes it
+  const handleOnChange = (e) => {
+    const inputValue = parseInt(e.target.value, 10);
+    if (!isNaN(inputValue)) {
+      setItemQuantityCounter(inputValue);
+    }
+  };
+
+  // Update the quantity with the given action (add/subtract one)
+  const handleQuantityButtonClick = (action) => {
+    setItemQuantityCounter((prevValue) => {
+      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
+    });
+  };
   // Replace the itemslist with a new list that has the corresponding item filtered out
   const handleRemove = (itemIdToRemove) => {
     setCartItems((prevVal) =>
@@ -72,11 +98,37 @@ function CartItemCard({ item }) {
           className="cart-item-card__quantity__value"
           aria-label="Amount of items"
         >
-          <QuantityController
-            item={item}
-            itemQuantityCounter={itemQuantityCounter}
-            setItemQuantityCounter={setItemQuantityCounter}
-          />
+          <div className="counter-container">
+            {/* Button to subtract one item from the quantity value */}
+            <button
+              className="counter-container__button"
+              aria-label="Subtract item"
+              type="button"
+              onClick={() => handleQuantityButtonClick('subtract')}
+            >
+              -
+            </button>
+
+            {/* Quantity input field */}
+            <input
+              className="counter-container__counter-value"
+              aria-label="Item quantity"
+              onChange={handleOnChange}
+              type="text"
+              name="item-quantity"
+              value={itemQuantityCounter}
+            />
+
+            {/* Button to add one item to the quantity value */}
+            <button
+              className="counter-container__button"
+              aria-label="Add item"
+              type="button"
+              onClick={() => handleQuantityButtonClick('add')}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
 

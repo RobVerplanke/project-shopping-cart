@@ -2,7 +2,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
 import { useState, useRef } from 'react';
-import QuantityController from '../QuantityController.jsx';
 import CheckIcon from '@mui/icons-material/Check';
 import { setConfirmMessageVisible } from '../../utils/helperFunctions.js';
 
@@ -49,6 +48,21 @@ function ProductDetail() {
     setConfirmMessageVisible(confirmIcon);
   }
 
+  // Controlled component - update the input value when user changes it
+  const handleOnChange = (e) => {
+    const inputValue = parseInt(e.target.value, 10);
+    if (!isNaN(inputValue)) {
+      setItemQuantityCounter(inputValue);
+    }
+  };
+
+  // Update the quantity with the given action (add/subtract one)
+  const handleQuantityButtonClick = (action) => {
+    setItemQuantityCounter((prevValue) => {
+      return action === 'add' ? prevValue + 1 : Math.max(prevValue - 1, 1);
+    });
+  };
+
   return (
     <main aria-label="Product details">
       <h2>Product information</h2>
@@ -80,11 +94,37 @@ function ProductDetail() {
           </div>
 
           <div className="details-content-container__quantity-holder">
-            <QuantityController
-              item={activeItem}
-              itemQuantityCounter={itemQuantityCounter}
-              setItemQuantityCounter={setItemQuantityCounter}
-            />
+            <div className="counter-container">
+              {/* Button to subtract one item from the quantity value */}
+              <button
+                className="counter-container__button"
+                aria-label="Subtract item"
+                type="button"
+                onClick={() => handleQuantityButtonClick('subtract')}
+              >
+                -
+              </button>
+
+              {/* Quantity input field */}
+              <input
+                className="counter-container__counter-value"
+                aria-label="Item quantity"
+                onChange={handleOnChange}
+                type="text"
+                name="item-quantity"
+                value={itemQuantityCounter}
+              />
+
+              {/* Button to add one item to the quantity value */}
+              <button
+                className="counter-container__button"
+                aria-label="Add item"
+                type="button"
+                onClick={() => handleQuantityButtonClick('add')}
+              >
+                +
+              </button>
+            </div>
 
             {/* Add to cart button */}
             <button
